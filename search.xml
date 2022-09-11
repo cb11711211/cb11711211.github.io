@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title></title>
+      <link href="/2022/09/11/linux-chang-yong-ming-ling/"/>
+      <url>/2022/09/11/linux-chang-yong-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h1><h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>ctrl+b ? 显示快捷键帮助<br>ctrl+b 空格键 采用下一个内置布局，这个很有意思，在多屏时，用这个就会将多有屏幕竖着展示<br>ctrl+b ! 把当前窗口变为新窗口<br>ctrl+b “ 模向分隔窗口<br>ctrl+b % 纵向分隔窗口<br>ctrl+b q 显示分隔窗口的编号<br>ctrl+b o 跳到下一个分隔窗口。多屏之间的切换<br>ctrl+b 上下键 上一个及下一个分隔窗口<br>ctrl+b C-方向键 调整分隔窗口大小<br>ctrl+b &amp; 确认后退出当前tmux<br>ctrl+b [ 复制模式，即将当前屏幕移到上一个的位置上，其他所有窗口都向前移动一个。<br>ctrl+b c 创建新窗口<br>ctrl+b n 选择下一个窗口<br>ctrl+b l 最后使用的窗口<br>ctrl+b p 选择前一个窗口<br>ctrl+b w 以菜单方式显示及选择窗口<br>ctrl+b s 以菜单方式显示和选择会话。这个常用到，可以选择进入哪个tmux<br>ctrl+b t 显示时钟。然后按enter键后就会恢复到shell终端状态<br>ctrl+b d 脱离当前会话；这样可以暂时返回Shell界面，输入tmux attach能够重新进入之前的会话</p><h2 id="数值计算"><a href="#数值计算" class="headerlink" title="数值计算"></a>数值计算</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">a <span class="token operator">=</span> <span class="token number">1</span>b <span class="token operator">=</span> <span class="token number">2</span><span class="token variable">${a+b}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h1 id="conda-常用操作"><a href="#conda-常用操作" class="headerlink" title="conda 常用操作"></a>conda 常用操作</h1><p>conda create -n my-env python=x.x</p><p>conda activate [env-name]</p><p>conda install -c r r-base # install the r packages that is not easily installed through conda </p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>article title</title>
+      <link href="/2022/09/11/article-title/"/>
+      <url>/2022/09/11/article-title/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/09/11/hello-world/"/>
+      <url>/2022/09/11/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
