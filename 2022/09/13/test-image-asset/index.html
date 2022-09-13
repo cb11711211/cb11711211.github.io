@@ -400,7 +400,7 @@
 <p><code>npm install hexo-renderer-marked --save</code></p>
 <p>Now, the new created post in hexo could generate <code>$filename</code> fold automatically, and the image upload will be resolved automatically with <code>your\storage\post\$filename_fold\${*.jpg}</code> so that the filepath you could regularly see is <code>filepath\*.jpg</code>. However, this filepath still could not been seen in typora.</p>
 <p>Then, set the typora. <code>preference</code> of <code>image</code> to <code>Copy image to custom folder</code>, which is <code>./${filename}</code> , <code>Apply above rules to local images</code>, <code>Use relative path if possable</code> and <code>add ./ to relative path</code></p>
-<p><img src="/2022/09/13/test-image-asset/test-image-asset" alt="screen shot"></p>
+<p><img src="/2022/09/13/test-image-asset/image-20220913172831483.png" alt="screen shot"></p>
 <p>And the last step is to add code in <code>node_modules\hexo-renderer-marked\lib\renderer.js</code> . Find the image render and add code </p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// Prepend root to image path</span>
 <span class="token function">image</span><span class="token punctuation">(</span><span class="token parameter">href<span class="token punctuation">,</span> title<span class="token punctuation">,</span> text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

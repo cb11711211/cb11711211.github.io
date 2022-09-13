@@ -401,13 +401,13 @@ Lo">
 <h2 id="Louvain-and-leiden"><a href="#Louvain-and-leiden" class="headerlink" title="Louvain and leiden"></a>Louvain and leiden</h2><p><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z">From Louvain to Leiden: guaranteeing well-connected communities - Scientific Reports</a></p>
 <p><a target="_blank" rel="noopener" href="https://timoast.github.io/blog/community-detection/">Community detection - Tim Stuart</a></p>
 <p>Community detection is often used to understand the structure of large and complex networks.</p>
-<p><img src="/2022/09/13/louvain-and-leiden-algorithm/09/13/louvain-and-leiden-algorithm/pasted-0.png" alt="Modularity"></p>
+<p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-0.png" alt="Modularity"></p>
 <p>Constant Potts Model (CPM) which over comes some limitations of modularity:</p>
-<p><img src="/2022/09/13/louvain-and-leiden-algorithm/09/13/louvain-and-leiden-algorithm/pasted-1.png" alt="CPM"></p>
+<p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-1.png" alt="CPM"></p>
 <blockquote>
 <p>The new algorithm integrates several earlier improvements, incorporating a combination of smart local move<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR15">15</a>, fast local move<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR16">16</a>,<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR17">17</a>and random neighbour move<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR18">18</a>.</p>
 </blockquote>
-<h3 id="Modularity-python-code-practice"><a href="#Modularity-python-code-practice" class="headerlink" title="Modularity python code practice"></a>Modularity python code practice</h3><p><img src="/2022/09/13/louvain-and-leiden-algorithm/09/13/louvain-and-leiden-algorithm/pasted-2.png" alt="Equation of modularity"></p>
+<h3 id="Modularity-python-code-practice"><a href="#Modularity-python-code-practice" class="headerlink" title="Modularity python code practice"></a>Modularity python code practice</h3><p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-2.png" alt="Equation of modularity"></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
 data <span class="token operator">=</span> np<span class="token punctuation">.</span>matrix<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -434,7 +434,7 @@ q <span class="token operator">=</span> <span class="token number">1</span><span
 <span class="token comment">## The modularity is 0.27999999999999997</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>The value of modularity is in [-1, 1], and if all of the nodes are allocated into 1 community the modularity is 1, while if each of the node is individually community the modularity is -1. When the value is in 0.3 ~ 0.7, the performance is good.</p>
-<h3 id="Louvain-Algorithm-process"><a href="#Louvain-Algorithm-process" class="headerlink" title="Louvain Algorithm process"></a>Louvain Algorithm process</h3><p><img src="/2022/09/13/louvain-and-leiden-algorithm/09/13/louvain-and-leiden-algorithm/pasted-3.png" alt="Equation of increasement of modularity"></p>
+<h3 id="Louvain-Algorithm-process"><a href="#Louvain-Algorithm-process" class="headerlink" title="Louvain Algorithm process"></a>Louvain Algorithm process</h3><p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-3.png" alt="Equation of increasement of modularity"></p>
 <p>Two stages:</p>
 <ol>
 <li><p>To allocate each node as one independent community, and then calculate the current modularity. For node i, try to delete node i form its own community rather than has the same community with node j and calculate the outcome modularity. Now, we got the increasment of the modularity comparing the two steps. For loop each node j in whole community, move the node i to the community with the highest increasment of modularity. The figure shows the equation of the increasment of modularity.</p>
@@ -450,12 +450,12 @@ q <span class="token operator">=</span> <span class="token number">1</span><span
 <p>Smart Local Move (SLM) find that the original louvain has difficults to split the communities once they are merged even though the total modularity would gain more. SLM tries to add a step which is to consider each sub-network as a new community and re-apply local movement to them after running local movement. And any sub-networks found in this step could treat as a different communities in aggregation step. </p>
 <p>Random Moving means that choosing a random neighbor node in each moving stage rather than iteratively for all node. The reason is that in most of the time, the community with neighbors could gain more modularity. And the random move also help the algorithm more explorative and it could detect better community structures. </p>
 <p>Louvain pruning keeps track of a list of nodes that have the potential to change the community which would reduce much more time in stage I.</p>
-<p><img src="/2022/09/13/louvain-and-leiden-algorithm/09/13/louvain-and-leiden-algorithm/pasted-5.png" alt="Disconnected collapse"></p>
+<p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-5.png" alt="Disconnected collapse"></p>
 <h3 id="Leiden-Algorithm-process"><a href="#Leiden-Algorithm-process" class="headerlink" title="Leiden Algorithm process"></a>Leiden Algorithm process</h3><blockquote>
 <p>The Leiden algorithm consists of three phases: (1) local moving of nodes, (2) refinement of the partition and (3) aggregation of the network based on the refined partition, using the non-refined partition to create an initial partition for the aggregate network.</p>
 </blockquote>
 <p>The refinement step allows badly connected communities to be split before creating the aggregate network. This is very similar to what the smart local moving algorithm does. As far as I can tell, Leiden seems to essentially be smart local moving with the additional improvements of random moving and Louvain pruning added.</p>
-<p><img src="/2022/09/13/louvain-and-leiden-algorithm/09/13/louvain-and-leiden-algorithm/pasted-4.png" alt="Leiden algorithm process"></p>
+<p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-4.png" alt="Leiden algorithm process"></p>
 
                 
             </div>
