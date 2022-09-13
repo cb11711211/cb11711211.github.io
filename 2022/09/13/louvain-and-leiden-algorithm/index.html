@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Basic usage of git, single-cell">
-    <meta name="description" content="Version Control SystemSome interesting historyLinus had been using diff and patch command in linux to achieve version co">
+    <meta name="keywords" content="Louvain and leiden algorithm, single-cell">
+    <meta name="description" content="Clustering algorithmFor the default usage of clustering algorithm in scanpy, there are 4 settings. 
+
+Original Louvain
+Lo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Basic usage of git | wulilichaoBlog</title>
+    <title>Louvain and leiden algorithm | wulilichaoBlog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -335,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Basic usage of git</h1>
+                    <h1 class="description center-align post-title">Louvain and leiden algorithm</h1>
                 </div>
             </div>
         </div>
@@ -362,13 +365,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -389,7 +388,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    202
+                    871
                 </div>
                 
 
@@ -414,7 +413,71 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Version-Control-System"><a href="#Version-Control-System" class="headerlink" title="Version Control System"></a>Version Control System</h1><h2 id="Some-interesting-history"><a href="#Some-interesting-history" class="headerlink" title="Some interesting history"></a>Some interesting history</h2><p>Linus had been using <code>diff</code> and <code>patch</code> command in linux to achieve version control of software engineering, and the basic principle of <code>diff</code> and <code>patch</code> is simple. When a <code>a.txt</code> is upgraded to <code>b.txt</code> , using <code>diff a.txt b.txt</code> will generate a <code>diff.txt</code> which would tell you some lines that is presenting in <code>a.txt</code> and others are missed. After that, you can delete the <code>a.txt</code> and keep<code>b.txt diff.txt</code> . In the other side, you could also generate <code>a.txt</code> just from <code>b.txt</code> and <code>diff.txt</code> using <code>patch</code>. This is the basic steps for linus to do the version control of documents. However the <code>diff</code> and <code>patch</code> command could not implement in binary documents, so that the usage of a modern version control system is urgen for linux community around 2000. Linus has applied a business version control system in linux community, and the software is commited to authorized free usage for linux commnity members. But something happends and break out this relationship. In April 4th, 2004, linus has been arranging to develop the git version control system, and finished it just 2 weeks later and the performance reaching the expectation.</p>
+                <h1 id="Clustering-algorithm"><a href="#Clustering-algorithm" class="headerlink" title="Clustering algorithm"></a>Clustering algorithm</h1><p>For the default usage of clustering algorithm in scanpy, there are 4 settings. </p>
+<ol>
+<li>Original Louvain</li>
+<li>Louvain with multilevel refinement</li>
+<li>SLM</li>
+<li>Leiden algorithm</li>
+</ol>
+<h2 id="Louvain-and-leiden"><a href="#Louvain-and-leiden" class="headerlink" title="Louvain and leiden"></a>Louvain and leiden</h2><p><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z">From Louvain to Leiden: guaranteeing well-connected communities - Scientific Reports</a></p>
+<p><a target="_blank" rel="noopener" href="https://timoast.github.io/blog/community-detection/">Community detection - Tim Stuart</a></p>
+<p>Community detection is often used to understand the structure of large and complex networks.</p>
+<p><img src="/%5Cimages%5Cpasted-0.png%5C" alt="upload successful"></p>
+<p>Constant Potts Model (CPM) which over comes some limitations of modularity:</p>
+<p><img src="/%5Cimages%5Cpasted-1.png%5C" alt="upload successful"></p>
+<blockquote>
+<p>The new algorithm integrates several earlier improvements, incorporating a combination of smart local move<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR15">15</a>, fast local move<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR16">16</a>,<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR17">17</a>and random neighbour move<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-019-41695-z#ref-CR18">18</a>.</p>
+</blockquote>
+<h3 id="Modularity-python-code-practice"><a href="#Modularity-python-code-practice" class="headerlink" title="Modularity python code practice"></a>Modularity python code practice</h3><p><img src="/%5Cimages%5Cpasted-2.png%5C" alt="upload successful"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+data <span class="token operator">=</span> np<span class="token punctuation">.</span>matrix<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+label <span class="token operator">=</span> np<span class="token punctuation">.</span>matrix<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># calculate the connectivity of the matrix</span>
+m <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span><span class="token number">2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"The network has totally %d connections"</span></span> <span class="token operator">%</span> m<span class="token punctuation">)</span>
+<span class="token comment">## The network has totally 2 connections ##</span>
+<span class="token comment"># calculate the degree of each node</span>
+k <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"The degree of each node is </span><span class="token interpolation"><span class="token punctuation">{</span>k<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+<span class="token comment">## The degree of each node is [[1]</span>
+<span class="token comment">##  [2]</span>
+<span class="token comment">##  [2]]</span>
+<span class="token comment"># calculate the modularity matrix</span>
+b <span class="token operator">=</span> data <span class="token operator">-</span> np<span class="token punctuation">.</span>multiply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>tile<span class="token punctuation">(</span>k<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>tile<span class="token punctuation">(</span>k<span class="token punctuation">.</span>T<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>m<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"The modularity matrix is </span><span class="token interpolation"><span class="token punctuation">{</span>b<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+<span class="token comment">## The modularity matrix is [[ 0.8 -0.4 -0.4]</span>
+<span class="token comment">## [-0.4  0.2  0.2]</span>
+<span class="token comment">## [ 0.6 -0.8  0.2]]</span>
+<span class="token comment"># calculate the modularity</span>
+q <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>m<span class="token punctuation">)</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>trace<span class="token punctuation">(</span>label<span class="token punctuation">.</span>T<span class="token operator">*</span>b<span class="token operator">*</span>label<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"The modularity is </span><span class="token interpolation"><span class="token punctuation">{</span>q<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+<span class="token comment">## The modularity is 0.27999999999999997</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>The value of modularity is in [-1, 1], and if all of the nodes are allocated into 1 community the modularity is 1, while if each of the node is individually community the modularity is -1. When the value is in 0.3 ~ 0.7, the performance is good.</p>
+<h3 id="Louvain-Algorithm-process"><a href="#Louvain-Algorithm-process" class="headerlink" title="Louvain Algorithm process"></a>Louvain Algorithm process</h3><p><img src="/%5Cimages%5Cpasted-3.png%5C" alt="upload successful"></p>
+<p>Two stages:</p>
+<ol>
+<li><p>To allocate each node as one independent community, and then calculate the current modularity. For node i, try to delete node i form its own community rather than has the same community with node j and calculate the outcome modularity. Now, we got the increasment of the modularity comparing the two steps. For loop each node j in whole community, move the node i to the community with the highest increasment of modularity. The figure shows the equation of the increasment of modularity.</p>
+</li>
+<li><p>Aggregating the network in the first step, try to reconsturct the whole network.</p>
+</li>
+</ol>
+<blockquote>
+<p>In this stage we essentially collapse communities down into a single representative node, creating a new simplified graph. To do this we just sum all the edge weights between nodes of the corresponding communities to get a single weighted edge between them, and collapse each community down to a single new node. Once aggregation is complete we restart the local moving phase, and continue to iterate until everything converges down to one node. This aspect of the Louvain algorithm can be used to give information about the hierarchical relationships between communities by tracking at which stage the nodes in the communities were aggregated.</p>
+</blockquote>
+<h3 id="Limitations-and-Improvements-on-Louvain"><a href="#Limitations-and-Improvements-on-Louvain" class="headerlink" title="Limitations and Improvements on Louvain"></a>Limitations and Improvements on Louvain</h3><p>Modularity suffers from a difficult problem known as the resolution limit, where there is a minimal community size that not able to be resovled by optimizing modularity. The community with size smaller than the minimal size could not be identified through optimizing modularity. </p>
+<p>Constant Potts Model (CPM) which is an alternative objective function for community detection algorithm. The object of CPM is to maximize the internal connection edges in a community, while keep the community size small, and the constant parameter balances the two characteristics. The CPM could better split into two communities when the link density between the community is lower than constant, and the constant here acts like resolution. Higher constant will result in fewer communities. </p>
+<p>Smart Local Move (SLM) find that the original louvain has difficults to split the communities once they are merged even though the total modularity would gain more. SLM tries to add a step which is to consider each sub-network as a new community and re-apply local movement to them after running local movement. And any sub-networks found in this step could treat as a different communities in aggregation step. </p>
+<p>Random Moving means that choosing a random neighbor node in each moving stage rather than iteratively for all node. The reason is that in most of the time, the community with neighbors could gain more modularity. And the random move also help the algorithm more explorative and it could detect better community structures. </p>
+<p>Louvain pruning keeps track of a list of nodes that have the potential to change the community which would reduce much more time in stage I.</p>
+<p><img src="/%5Cimages%5Cpasted-5.png%5C" alt="upload successful"></p>
+<h3 id="Leiden-Algorithm-process"><a href="#Leiden-Algorithm-process" class="headerlink" title="Leiden Algorithm process"></a>Leiden Algorithm process</h3><blockquote>
+<p>The Leiden algorithm consists of three phases: (1) local moving of nodes, (2) refinement of the partition and (3) aggregation of the network based on the refined partition, using the non-refined partition to create an initial partition for the aggregate network.</p>
+</blockquote>
+<p>The refinement step allows badly connected communities to be split before creating the aggregate network. This is very similar to what the smart local moving algorithm does. As far as I can tell, Leiden seems to essentially be smart local moving with the additional improvements of random moving and Louvain pruning added.</p>
+<p><img src="/%5Cimages%5Cpasted-4.png%5C" alt="upload successful"></p>
 
                 
             </div>
@@ -441,7 +504,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cb11711211.github.io/2022/09/13/basic-usage-of-git/">http://cb11711211.github.io/2022/09/13/basic-usage-of-git/</a>
+                    <a href="http://cb11711211.github.io/2022/09/13/louvain-and-leiden-algorithm/">http://cb11711211.github.io/2022/09/13/louvain-and-leiden-algorithm/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -478,11 +541,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -526,9 +585,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/09/13/louvain-and-leiden-algorithm/">
                     <div class="card-image">
@@ -546,9 +606,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -557,6 +617,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -567,13 +628,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/12/tmux-command/">
+                <a href="/2022/09/13/basic-usage-of-git/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="tmux command">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Basic usage of git">
                         
-                        <span class="card-title">tmux command</span>
+                        <span class="card-title">Basic usage of git</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -584,7 +645,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-13
                             </span>
                         <span class="publish-author">
                             
@@ -593,6 +654,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
                 </div>
                 
             </div>
