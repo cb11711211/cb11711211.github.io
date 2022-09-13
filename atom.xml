@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>wulilichaoBlog</title>
   
-  <subtitle>a bioinformatic learner</subtitle>
+  <subtitle>A Bioinformatics Learner</subtitle>
   <link href="http://cb11711211.github.io/atom.xml" rel="self"/>
   
   <link href="http://cb11711211.github.io/"/>
-  <updated>2022-09-12T07:50:59.952Z</updated>
+  <updated>2022-09-13T02:46:29.071Z</updated>
   <id>http://cb11711211.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Basic usage of git</title>
+    <link href="http://cb11711211.github.io/2022/09/13/basic-usage-of-git/"/>
+    <id>http://cb11711211.github.io/2022/09/13/basic-usage-of-git/</id>
+    <published>2022-09-13T02:46:29.000Z</published>
+    <updated>2022-09-13T02:46:29.071Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Version-Control-System&quot;&gt;&lt;a href=&quot;#Version-Control-System&quot; class=&quot;headerlink&quot; title=&quot;Version Control System&quot;&gt;&lt;/a&gt;Version Control</summary>
+        
+      
+    
+    
+    
+    
+    <category term="git" scheme="http://cb11711211.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tmux command</title>
     <link href="http://cb11711211.github.io/2022/09/12/tmux-command/"/>
     <id>http://cb11711211.github.io/2022/09/12/tmux-command/</id>
     <published>2022-09-12T07:40:54.000Z</published>
-    <updated>2022-09-12T07:50:59.952Z</updated>
+    <updated>2022-09-12T15:47:12.946Z</updated>
     
     
       
@@ -67,7 +90,7 @@
     <link href="http://cb11711211.github.io/2022/09/11/hello-world/"/>
     <id>http://cb11711211.github.io/2022/09/11/hello-world/</id>
     <published>2022-09-11T06:46:48.125Z</published>
-    <updated>2022-09-11T06:46:48.125Z</updated>
+    <updated>2022-09-12T15:40:36.321Z</updated>
     
     
       

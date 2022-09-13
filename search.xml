@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Basic usage of git</title>
+      <link href="/2022/09/13/basic-usage-of-git/"/>
+      <url>/2022/09/13/basic-usage-of-git/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Version-Control-System"><a href="#Version-Control-System" class="headerlink" title="Version Control System"></a>Version Control System</h1><h2 id="Some-interesting-history"><a href="#Some-interesting-history" class="headerlink" title="Some interesting history"></a>Some interesting history</h2><p>Linus had been using <code>diff</code> and <code>patch</code> command in linux to achieve version control of software engineering, and the basic principle of <code>diff</code> and <code>patch</code> is simple. When a <code>a.txt</code> is upgraded to <code>b.txt</code> , using <code>diff a.txt b.txt</code> will generate a <code>diff.txt</code> which would tell you some lines that is presenting in <code>a.txt</code> and others are missed. After that, you can delete the <code>a.txt</code> and keep<code>b.txt diff.txt</code> . In the other side, you could also generate <code>a.txt</code> just from <code>b.txt</code> and <code>diff.txt</code> using <code>patch</code>. This is the basic steps for linus to do the version control of documents. However the <code>diff</code> and <code>patch</code> command could not implement in binary documents, so that the usage of a modern version control system is urgen for linux community around 2000. Linus has applied a business version control system in linux community, and the software is commited to authorized free usage for linux commnity members. But something happends and break out this relationship. In April 4th, 2004, linus has been arranging to develop the git version control system, and finished it just 2 weeks later and the performance reaching the expectation.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tmux command</title>
       <link href="/2022/09/12/tmux-command/"/>
       <url>/2022/09/12/tmux-command/</url>
@@ -46,7 +65,7 @@
       <link href="/2022/09/11/hello-world/"/>
       <url>/2022/09/11/hello-world/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h1 id="More-and-more"><a href="#More-and-more" class="headerlink" title="More and more"></a>More and more</h1><p>What should you do more about hexo? I tried some fantastic hexo themes. </p>]]></content>
       
       
       
