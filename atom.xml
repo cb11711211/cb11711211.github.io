@@ -6,7 +6,7 @@
   <link href="http://cb11711211.github.io/atom.xml" rel="self"/>
   
   <link href="http://cb11711211.github.io/"/>
-  <updated>2022-09-13T09:01:25.964Z</updated>
+  <updated>2022-09-13T10:14:01.223Z</updated>
   <id>http://cb11711211.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>test_image_asset</title>
+    <link href="http://cb11711211.github.io/2022/09/13/test-image-asset/"/>
+    <id>http://cb11711211.github.io/2022/09/13/test-image-asset/</id>
+    <published>2022-09-13T09:27:00.000Z</published>
+    <updated>2022-09-13T10:14:01.223Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Hexo-figure-problem&quot;&gt;&lt;a href=&quot;#Hexo-figure-problem&quot; class=&quot;headerlink&quot; title=&quot;Hexo figure problem&quot;&gt;&lt;/a&gt;Hexo figure problem&lt;/h3&gt;&lt;p&gt;I</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Louvain and leiden algorithm</title>
     <link href="http://cb11711211.github.io/2022/09/13/louvain-and-leiden-algorithm/"/>
     <id>http://cb11711211.github.io/2022/09/13/louvain-and-leiden-algorithm/</id>
     <published>2022-09-13T08:14:20.000Z</published>
-    <updated>2022-09-13T09:01:25.964Z</updated>
+    <updated>2022-09-13T10:15:33.526Z</updated>
     
     
       
