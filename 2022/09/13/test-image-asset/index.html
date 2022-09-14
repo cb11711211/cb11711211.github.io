@@ -50,7 +50,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
 </head>
@@ -376,7 +378,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    215
+                    418
                 </div>
                 
 
@@ -408,12 +410,11 @@
 <span class="token key atrule">marked</span><span class="token punctuation">:</span>
     <span class="token key atrule">prependRoot</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
     <span class="token key atrule">postAsset</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>Second step is to install a plugins for image loading</p>
 <p><code>npm install hexo-renderer-marked --save</code></p>
 <p>Now, the new created post in hexo could generate <code>$filename</code> fold automatically, and the image upload will be resolved automatically with <code>your\storage\post\$filename_fold\${*.jpg}</code> so that the filepath you could regularly see is <code>filepath\*.jpg</code>. However, this filepath still could not been seen in typora.</p>
 <p>Then, set the typora. <code>preference</code> of <code>image</code> to <code>Copy image to custom folder</code>, which is <code>./${filename}</code> , <code>Apply above rules to local images</code>, <code>Use relative path if possable</code> and <code>add ./ to relative path</code></p>
-<p><img src="/2022/09/13/test-image-asset/image-20220913172831483.png" alt="screen shot"></p>
+<p><img src="/2022/09/13/test-image-asset/image-20220913172831483.png" alt="screen shot" style="zoom:50%;"></p>
 <p>And the last step is to add code in <code>node_modules\hexo-renderer-marked\lib\renderer.js</code> . Find the image render and add code </p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// Prepend root to image path</span>
 <span class="token function">image</span><span class="token punctuation">(</span><span class="token parameter">href<span class="token punctuation">,</span> title<span class="token punctuation">,</span> text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -422,10 +423,33 @@
     href <span class="token operator">=</span> href<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
     <span class="token operator">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <p>Now the image is regularly showed!<br><span class="github-emoji"><span>😙</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f619.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<h1 id="Hexo-amp-matery-math-equation-problem"><a href="#Hexo-amp-matery-math-equation-problem" class="headerlink" title="Hexo &amp; matery math equation problem"></a>Hexo &amp; matery math equation problem</h1><p>May be you think that if the problem about rendering figure is solved and the equation should not be a case. But I encounter about the rendering figure of math equation are not accountable with my theme and configuration. So that, I believe that I should tey to use Hexo plugins to solve it.</p>
+<p>The first step is to install the math avaible plugin <code>npm install hexo-math --save</code>, and configure your <code>_config.yml</code>, add following code</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">math</span><span class="token punctuation">:</span>
+  <span class="token key atrule">engine</span><span class="token punctuation">:</span> <span class="token string">'mathjax'</span>
+  <span class="token key atrule">mathjax</span><span class="token punctuation">:</span>
+    <span class="token key atrule">src</span><span class="token punctuation">:</span> custom_mathjax_source
+    <span class="token key atrule">config</span><span class="token punctuation">:</span>
+      <span class="token comment"># MathJax config</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>And then open the file <code>your/theme/path/_config.yml</code> and set </p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">mathjax</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">per_page</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">cdn</span><span class="token punctuation">:</span> //cdn.mathjax.org/mathjax/latest/MathJax.js<span class="token punctuation">?</span>config=TeX<span class="token punctuation">-</span>AMS<span class="token punctuation">-</span>MML_HTMLorMML<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Change the default rendering engine of Hexo, because the <code>hexo-renderer-marked</code> would reder <code>_</code> between $$$$ as <code>&lt;i&gt;</code>in <code>HTML</code>. So that </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-marked <span class="token parameter variable">--save</span>
+<span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-kramed <span class="token parameter variable">--save</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>After that, follow tha instruction in README.md of hexo-render-kramed, add following code in <code>_config.yml</code>. </p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">kramed</span><span class="token punctuation">:</span>
+  <span class="token key atrule">gfm</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">pedantic</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">sanitize</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">tables</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">breaks</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">smartLists</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">smartypants</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Now, in your bolg, the <code>\$\$ something inside \$\$</code> would appear normally as your math equation.</p>
 
                 
             </div>
@@ -537,18 +561,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/09/13/test-image-asset/">
+                <a href="/2022/09/14/dbscan-algorithm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Test image asset">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="DBSCAN algorithm">
                         
-                        <span class="card-title">Test image asset</span>
+                        <span class="card-title">DBSCAN algorithm</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -558,27 +581,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/blog/">
-                        <span class="chip bg-color">blog</span>
+                    <a href="/tags/spatial-transciptomics/">
+                        <span class="chip bg-color">spatial transciptomics</span>
                     </a>
                     
                 </div>

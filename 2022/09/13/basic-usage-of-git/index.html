@@ -50,7 +50,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
 </head>
@@ -376,7 +378,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    202
+                    284
                 </div>
                 
 
@@ -402,6 +404,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Version-Control-System"><a href="#Version-Control-System" class="headerlink" title="Version Control System"></a>Version Control System</h1><h2 id="Some-interesting-history"><a href="#Some-interesting-history" class="headerlink" title="Some interesting history"></a>Some interesting history</h2><p>Linus had been using <code>diff</code> and <code>patch</code> command in linux to achieve version control of software engineering, and the basic principle of <code>diff</code> and <code>patch</code> is simple. When a <code>a.txt</code> is upgraded to <code>b.txt</code> , using <code>diff a.txt b.txt</code> will generate a <code>diff.txt</code> which would tell you some lines that is presenting in <code>a.txt</code> and others are missed. After that, you can delete the <code>a.txt</code> and keep<code>b.txt diff.txt</code> . In the other side, you could also generate <code>a.txt</code> just from <code>b.txt</code> and <code>diff.txt</code> using <code>patch</code>. This is the basic steps for linus to do the version control of documents. However the <code>diff</code> and <code>patch</code> command could not implement in binary documents, so that the usage of a modern version control system is urgen for linux community around 2000. Linus has applied a business version control system in linux community, and the software is commited to authorized free usage for linux commnity members. But something happends and break out this relationship. In April 4th, 2004, linus has been arranging to develop the git version control system, and finished it just 2 weeks later and the performance reaching the expectation.</p>
+<h2 id="Basic-principle-when-using-git"><a href="#Basic-principle-when-using-git" class="headerlink" title="Basic principle when using git"></a>Basic principle when using git</h2><p>One commit for one thing, even though you just finish a new function or repair a bug. </p>
+<p>But you can still use <code>git add</code> to add the change into Stage, when finishing <code>git commit</code> the content in Stage would be commit into repository.</p>
+<p><code>git</code> have a better <code>diff</code> command than linux <code>diff</code> and <code>patch</code>, and git  support binary document. And <code>git diff --cached</code> could allow you to view the difference of the change log of files in Stage. </p>
 
                 
             </div>
