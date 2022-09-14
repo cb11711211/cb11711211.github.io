@@ -6,7 +6,7 @@
   <link href="http://cb11711211.github.io/atom.xml" rel="self"/>
   
   <link href="http://cb11711211.github.io/"/>
-  <updated>2022-09-13T11:55:33.279Z</updated>
+  <updated>2022-09-13T12:57:19.334Z</updated>
   <id>http://cb11711211.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://cb11711211.github.io/2022/09/13/test-image-asset/"/>
     <id>http://cb11711211.github.io/2022/09/13/test-image-asset/</id>
     <published>2022-09-13T09:27:00.000Z</published>
-    <updated>2022-09-13T11:55:33.279Z</updated>
+    <updated>2022-09-13T12:57:19.334Z</updated>
     
     
       
@@ -34,6 +34,10 @@
     
     
     
+    <category term="Hexo" scheme="http://cb11711211.github.io/categories/Hexo/"/>
+    
+    
+    <category term="blog" scheme="http://cb11711211.github.io/tags/blog/"/>
     
   </entry>
   
@@ -41,8 +45,8 @@
     <title>Louvain and leiden algorithm</title>
     <link href="http://cb11711211.github.io/2022/09/13/louvain-and-leiden-algorithm/"/>
     <id>http://cb11711211.github.io/2022/09/13/louvain-and-leiden-algorithm/</id>
-    <published>2022-09-13T08:14:20.000Z</published>
-    <updated>2022-09-13T11:01:30.585Z</updated>
+    <published>2022-09-13T08:14:00.000Z</published>
+    <updated>2022-09-13T12:57:52.812Z</updated>
     
     
       
@@ -55,6 +59,10 @@
     
     
     
+    <category term="algorithm" scheme="http://cb11711211.github.io/categories/algorithm/"/>
+    
+    
+    <category term="clustering" scheme="http://cb11711211.github.io/tags/clustering/"/>
     
   </entry>
   
@@ -62,8 +70,8 @@
     <title>Basic usage of git</title>
     <link href="http://cb11711211.github.io/2022/09/13/basic-usage-of-git/"/>
     <id>http://cb11711211.github.io/2022/09/13/basic-usage-of-git/</id>
-    <published>2022-09-13T02:46:29.000Z</published>
-    <updated>2022-09-13T02:46:29.071Z</updated>
+    <published>2022-09-13T02:46:00.000Z</published>
+    <updated>2022-09-13T12:58:52.874Z</updated>
     
     
       
@@ -76,8 +84,10 @@
     
     
     
+    <category term="Git" scheme="http://cb11711211.github.io/categories/Git/"/>
     
-    <category term="git" scheme="http://cb11711211.github.io/tags/git/"/>
+    
+    <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
     
   </entry>
   
@@ -86,7 +96,7 @@
     <link href="http://cb11711211.github.io/2022/09/12/tmux-command/"/>
     <id>http://cb11711211.github.io/2022/09/12/tmux-command/</id>
     <published>2022-09-12T07:40:54.000Z</published>
-    <updated>2022-09-12T15:47:12.946Z</updated>
+    <updated>2022-09-13T13:03:32.201Z</updated>
     
     
       
@@ -107,7 +117,7 @@
     <link href="http://cb11711211.github.io/2022/09/11/hexo-admin-usage/"/>
     <id>http://cb11711211.github.io/2022/09/11/hexo-admin-usage/</id>
     <published>2022-09-11T07:39:00.000Z</published>
-    <updated>2022-09-12T07:38:15.889Z</updated>
+    <updated>2022-09-13T12:24:47.429Z</updated>
     
     
       
@@ -120,7 +130,7 @@
     
     
     
-    <category term="hexo-build" scheme="http://cb11711211.github.io/categories/hexo-build/"/>
+    <category term="hexo" scheme="http://cb11711211.github.io/categories/hexo/"/>
     
     
     <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
