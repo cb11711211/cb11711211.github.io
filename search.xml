@@ -42,6 +42,33 @@
     
     
     <entry>
+      <title>Using conda to help install R packages</title>
+      <link href="/2022/09/13/using-conda-to-help-install-r-packages/"/>
+      <url>/2022/09/13/using-conda-to-help-install-r-packages/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h1><p>Conda is a software which could help you to govern your software programming environment. However, if you are not so familiar with conda environment, you could make it a mess for your environment. Here I would like to give some tips and advise to help you use conda.</p><h2 id="conda-usage"><a href="#conda-usage" class="headerlink" title="conda usage"></a>conda usage</h2><p><span class="github-emoji"><span>🙌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f64c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p><p>For most of the beginners, create a new environment in the first place and name would be suggested. And keep in minds that, using <code>conda activate [env-name]</code> to activate the environment.</p><pre class="line-numbers language-{bash}" data-language="{bash}"><code class="language-{bash}">conda create -n my-env python=x.xconda activate [env-name]conda install -c r r-base # install the r packages that is not easily installed through conda<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>The <code>conda install</code> in any environment would install the packages</p><h2 id="conda-install-r-packages"><a href="#conda-install-r-packages" class="headerlink" title="conda install r-packages"></a>conda install r-packages</h2><p>If you find some packages could not install from CRAN through <code>install.packages()</code> in R, and the warning log says that there is some missing lib you may not install. You could easily fix that if you have <code>sudo</code> authority, however, the install of missing support could not easily if you are not root. So, I encourage to use packages manager tools like conda to achieve that.</p><p>When you are encountering some trouble in installation, you could firstly google <code>conda install $packages_name</code>. Usually, the conda channel r could have the packages in repository. And you could easily install it through <code>conda install</code>. And if there are more problems, you may have to search for configuring it through source, but some development support could also be installed through conda. So that, conda could save your life, if you are not roor user.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> conda </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tips </tag>
+            
+            <tag> conda </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Test image asset</title>
       <link href="/2022/09/13/test-image-asset/"/>
       <url>/2022/09/13/test-image-asset/</url>
@@ -134,7 +161,7 @@
       <link href="/2022/09/11/hexo-admin-usage/"/>
       <url>/2022/09/11/hexo-admin-usage/</url>
       
-        <content type="html"><![CDATA[<h1 id="Install-hexo-admin"><a href="#Install-hexo-admin" class="headerlink" title="Install hexo-admin"></a>Install hexo-admin</h1><pre class="line-numbers language-{shell}" data-language="{shell}"><code class="language-{shell}"># cd to/your/hexo/path/npm server -dopen http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>Now enter the page link in browser<br>And click to <code>Settings</code> –&gt; <code>Setup authentification here.</code><br>Setting your log in name, passwd, and secret. (Note that do not set too simple)<br>Then following the instrction to paste the admin-pharses in the <code>_config.yaml</code><br>You could login ine hexo admin and publish your posts</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Install-hexo-admin"><a href="#Install-hexo-admin" class="headerlink" title="Install hexo-admin"></a>Install hexo-admin</h1><pre class="line-numbers language-{shell}" data-language="{shell}"><code class="language-{shell}"># cd to/your/hexo/path/npm server -dopen http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>Now enter the page link in browser<br>And click to <code>Settings</code> —&gt; <code>Setup authentification here.</code><br>Setting your log in name, passwd, and secret. (Note that do not set too simple)<br>Then following the instrction to paste the admin-pharses in the <code>_config.yaml</code><br>You could login ine hexo admin and publish your posts</p>]]></content>
       
       
       <categories>
@@ -147,6 +174,8 @@
         <tags>
             
             <tag> tips </tag>
+            
+            <tag> blog </tag>
             
         </tags>
       

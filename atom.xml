@@ -63,6 +63,33 @@
   </entry>
   
   <entry>
+    <title>Using conda to help install R packages</title>
+    <link href="http://cb11711211.github.io/2022/09/13/using-conda-to-help-install-r-packages/"/>
+    <id>http://cb11711211.github.io/2022/09/13/using-conda-to-help-install-r-packages/</id>
+    <published>2022-09-13T12:59:00.000Z</published>
+    <updated>2022-09-15T09:04:38.271Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Conda&quot;&gt;&lt;a href=&quot;#Conda&quot; class=&quot;headerlink&quot; title=&quot;Conda&quot;&gt;&lt;/a&gt;Conda&lt;/h1&gt;&lt;p&gt;Conda is a software which could help you to govern your</summary>
+        
+      
+    
+    
+    
+    <category term="conda" scheme="http://cb11711211.github.io/categories/conda/"/>
+    
+    
+    <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
+    
+    <category term="conda" scheme="http://cb11711211.github.io/tags/conda/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Test image asset</title>
     <link href="http://cb11711211.github.io/2022/09/13/test-image-asset/"/>
     <id>http://cb11711211.github.io/2022/09/13/test-image-asset/</id>
@@ -163,7 +190,7 @@
     <link href="http://cb11711211.github.io/2022/09/11/hexo-admin-usage/"/>
     <id>http://cb11711211.github.io/2022/09/11/hexo-admin-usage/</id>
     <published>2022-09-11T07:39:00.000Z</published>
-    <updated>2022-09-14T04:59:54.738Z</updated>
+    <updated>2022-09-15T08:59:46.043Z</updated>
     
     
       
@@ -180,6 +207,8 @@
     
     
     <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
+    
+    <category term="blog" scheme="http://cb11711211.github.io/tags/blog/"/>
     
   </entry>
   
