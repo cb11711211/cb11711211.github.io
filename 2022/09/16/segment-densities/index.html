@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo admin Usage, single-cell">
-    <meta name="description" content="Install hexo-admin# cd to/your/hexo/path/
-npm server -d
-open http://localhost:4000/admin/
-Now enter the page link in bro">
+    <meta name="keywords" content="segment_densities, single-cell">
+    <meta name="description" content="BackgroundTo align the RNA with its nucliei is an important part in the analysis of high-resolution spatial transcriptom">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ Now enter the page link in bro">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo admin Usage | wulilichaoBlog</title>
+    <title>segment_densities | wulilichaoBlog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -318,12 +315,12 @@ Now enter the page link in bro">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo admin Usage</h1>
+                    <h1 class="description center-align post-title">segment_densities</h1>
                 </div>
             </div>
         </div>
@@ -347,27 +344,14 @@ Now enter the page link in bro">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/tips/">
-                                <span class="chip bg-color">tips</span>
-                            </a>
-                        
-                            <a href="/tags/blog/">
-                                <span class="chip bg-color">blog</span>
+                            <a href="/tags/spatial-transcriptomics/">
+                                <span class="chip bg-color">spatial transcriptomics</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Hexo/" class="post-category">
-                                Hexo
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -376,7 +360,7 @@ Now enter the page link in bro">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-11
+                    2022-09-16
                 </div>
                 
 
@@ -385,7 +369,7 @@ Now enter the page link in bro">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    67
+                    590
                 </div>
                 
 
@@ -410,10 +394,54 @@ Now enter the page link in bro">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Install-hexo-admin"><a href="#Install-hexo-admin" class="headerlink" title="Install hexo-admin"></a>Install hexo-admin</h1><pre class="line-numbers language-{shell}" data-language="{shell}"><code class="language-{shell}"># cd to/your/hexo/path/
-npm server -d
-open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>Now enter the page link in browser<br>And click to <code>Settings</code> —&gt; <code>Setup authentification here.</code><br>Setting your log in name, passwd, and secret. (Note that do not set too simple)<br>Then following the instrction to paste the admin-pharses in the <code>_config.yaml</code><br>You could login ine hexo admin and publish your posts</p>
+                <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>To align the RNA with its nucliei is an important part in the analysis of high-resolution spatial transcriptomics. With more precise location for the RNA transcripts and the nuclei of the cells, we could segment profile of the single-cell therefore to accomplish the analysis of single-cell level spatial transcriptomics. While the first step is to align the figures (stain and RNA) appropritately, and this step has been done in spateo-release. </p>
+<p><a target="_blank" rel="noopener" href="https://spateo-release.readthedocs.io/en/latest/technicals/cell_segmentation.html#segmentation-approaches">Cell segmentation - Spateo documentation (spateo-release.readthedocs.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://spateo-release.readthedocs.io/en/latest/tutorials/notebooks/stain_segmentation.html">Stain segmentation - Spateo documentation (spateo-release.readthedocs.io)</a></p>
+<p>After that, the next step is to segment cells based on the alignment of the two stain figures. For segmentation, the difficulties first comes to segment the relative low and high denstiy region on the slide. As the document says that the global density could not be enough precise due to the UMI does not distribute on the space hemogenousely. </p>
+<h1 id="Function-Review"><a href="#Function-Review" class="headerlink" title="Function Review"></a>Function Review</h1><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># lm for logger_manager</span>
+<span class="token keyword">def</span> <span class="token function">segment_densities</span><span class="token punctuation">(</span>
+    adata<span class="token punctuation">:</span> AnnData<span class="token punctuation">,</span> <span class="token comment"># input anndata</span>
+    layer<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token comment"># Layers that contains UMI counts to implement this function</span>
+    binsize<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token comment"># choose bin size to merge pixels</span>
+    k<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token comment"># kernel size for Gaussian blur</span>
+    dk<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token comment"># kernel size for final dilation </span>
+    distance_threshold<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">float</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>  <span class="token comment"># cluster threshold</span>
+    background<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>Union<span class="token punctuation">[</span>Tuple<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Literal<span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token comment"># in default, the outer most pixels have been identified as background, set to false to turn off background detection.</span>
+    out_layer<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token comment"># the output layer name</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    X <span class="token operator">=</span> SKM<span class="token punctuation">.</span>select_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> layer<span class="token punctuation">,</span> make_dense<span class="token operator">=</span>binsize <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> 
+    <span class="token keyword">if</span> binsize <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Binning matrix with binsize=</span><span class="token interpolation"><span class="token punctuation">{</span>binsize<span class="token punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
+        X <span class="token operator">=</span> bin_matrix<span class="token punctuation">(</span>X<span class="token punctuation">,</span> binsize<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> issparse<span class="token punctuation">(</span>X<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string">"Converting to dense matrix."</span><span class="token punctuation">)</span>
+            X <span class="token operator">=</span> X<span class="token punctuation">.</span>A <span class="token comment"># why need the step</span>
+    lm<span class="token punctuation">.</span>main_info<span class="token punctuation">(</span><span class="token string">"Finding density bins."</span><span class="token punctuation">)</span>
+    bins <span class="token operator">=</span> _segment_densities<span class="token punctuation">(</span>X<span class="token punctuation">,</span> k<span class="token punctuation">,</span> dk<span class="token punctuation">,</span> distance_threshold<span class="token punctuation">)</span>	<span class="token comment"># key step for density segments</span>
+    <span class="token keyword">if</span> background <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">False</span><span class="token punctuation">:</span>
+        lm<span class="token punctuation">.</span>main_info<span class="token punctuation">(</span><span class="token string">"Setting background pixels."</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> background <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            x<span class="token punctuation">,</span> y <span class="token operator">=</span> background
+            background_label <span class="token operator">=</span> bins<span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            counts <span class="token operator">=</span> Counter<span class="token punctuation">(</span>bins<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> Counter<span class="token punctuation">(</span>bins<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> Counter<span class="token punctuation">(</span>bins<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> Counter<span class="token punctuation">(</span>bins<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            background_label <span class="token operator">=</span> counts<span class="token punctuation">.</span>most_common<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        bins<span class="token punctuation">[</span>bins <span class="token operator">==</span> background_label<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        bins<span class="token punctuation">[</span>bins <span class="token operator">&gt;</span> background_label<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> binsize <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token comment"># Expand back</span>
+        bins <span class="token operator">=</span> cv2<span class="token punctuation">.</span>resize<span class="token punctuation">(</span>bins<span class="token punctuation">,</span> adata<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> interpolation<span class="token operator">=</span>cv2<span class="token punctuation">.</span>INTER_NEAREST<span class="token punctuation">)</span>
+    out_layer <span class="token operator">=</span> out_layer <span class="token keyword">or</span> SKM<span class="token punctuation">.</span>gen_new_layer_key<span class="token punctuation">(</span>layer<span class="token punctuation">,</span> SKM<span class="token punctuation">.</span>BINS_SUFFIX<span class="token punctuation">)</span>
+    SKM<span class="token punctuation">.</span>set_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> out_layer<span class="token punctuation">,</span> bins<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Function-document"><a href="#Function-document" class="headerlink" title="Function document"></a>Function document</h2><p>The tissue is segmented into UMI density bins according to the following procedure.</p>
+<ol>
+<li>The UMI matrix is binned according to <code>binsize</code> (recommended &gt;= 20). </li>
+<li>The binned UMI matrix (from the previous step) is Gaussian blurred with kernel size <code>k</code>. Note that <code>k</code> is in terms of bins, not pixels.</li>
+<li>The elements of the blurred, binned UMI matrix is hierarchically clustered with Ward linkage, distance threshold <code>distance_threshold</code>, and spatial constraints (immediate neighbors). This yields pixel density bins (a.k.a. labels) the same shape as the binned matrix.</li>
+<li>Each density bin is diluted with kernel size <code>dk</code>, starting from the bin with the smallest mean UMI (a.k.a. least dense) and going to the bin with the largest mean UMI (a.k.a. most dense). This is done in an effort to mitigate RNA diffusion and “choppy” borders in subsequent steps.</li>
+<li>If <code>background</code> is not provided, the density bin that is most common in the perimeter of the matrix is selected to be background, and thus its label is changed to take a value of 0. A pixel can be manually selected to be background by providing a <code>(x, y)</code> tuple instead. This feature can be turned off by providing <code>False</code>.</li>
+<li>The density bin matrix is resized to be the same size as the original UMI matrix.</li>
+</ol>
 
                 
             </div>
@@ -430,7 +458,7 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">wulichao</a>
+                    <a href="/about" rel="external nofollow noreferrer">Wulilichao</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -440,7 +468,7 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cb11711211.github.io/2022/09/11/hexo-admin-usage/">http://cb11711211.github.io/2022/09/11/hexo-admin-usage/</a>
+                    <a href="http://cb11711211.github.io/2022/09/16/segment-densities/">http://cb11711211.github.io/2022/09/16/segment-densities/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -453,7 +481,7 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">wulichao</a>
+                    <a href="/about" target="_blank">Wulilichao</a>
                     !
                 </span>
             </div>
@@ -478,12 +506,8 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/tips/">
-                                    <span class="chip bg-color">tips</span>
-                                </a>
-                            
-                                <a href="/tags/blog/">
-                                    <span class="chip bg-color">blog</span>
+                                <a href="/tags/spatial-transcriptomics/">
+                                    <span class="chip bg-color">spatial transcriptomics</span>
                                 </a>
                             
                         </div>
@@ -533,13 +557,13 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/09/12/tmux-command/">
+                <a href="/2022/09/16/vscode-in-linux/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="tmux command">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="VScode in linux">
                         
-                        <span class="card-title">tmux command</span>
+                        <span class="card-title">VScode in linux</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -550,15 +574,27 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Wulilichao
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tips/">
+                        <span class="chip bg-color">tips</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -570,13 +606,13 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/11/hello-world/">
+                <a href="/2022/09/16/using-zsh-as-your-shell/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Using zsh as your shell">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Using zsh as your shell</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -587,15 +623,27 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Wulilichao
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tips/">
+                        <span class="chip bg-color">tips</span>
+                    </a>
+                    
                 </div>
                 
             </div>

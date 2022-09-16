@@ -6,7 +6,7 @@
   <link href="http://cb11711211.github.io/atom.xml" rel="self"/>
   
   <link href="http://cb11711211.github.io/"/>
-  <updated>2022-09-14T08:37:57.363Z</updated>
+  <updated>2022-09-16T06:27:46.304Z</updated>
   <id>http://cb11711211.github.io/</id>
   
   <author>
@@ -17,11 +17,85 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>VScode in linux</title>
+    <link href="http://cb11711211.github.io/2022/09/16/vscode-in-linux/"/>
+    <id>http://cb11711211.github.io/2022/09/16/vscode-in-linux/</id>
+    <published>2022-09-16T06:09:00.000Z</published>
+    <updated>2022-09-16T06:27:46.304Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Using-VScode-in-linux-though-Remote-ssh&quot;&gt;&lt;a href=&quot;#Using-VScode-in-linux-though-Remote-ssh&quot; class=&quot;headerlink&quot; title=&quot;Using VScode</summary>
+        
+      
+    
+    
+    
+    <category term="linux" scheme="http://cb11711211.github.io/categories/linux/"/>
+    
+    
+    <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>segment_densities</title>
+    <link href="http://cb11711211.github.io/2022/09/16/segment-densities/"/>
+    <id>http://cb11711211.github.io/2022/09/16/segment-densities/</id>
+    <published>2022-09-16T03:45:16.000Z</published>
+    <updated>2022-09-16T04:03:08.775Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h1&gt;&lt;p&gt;To align the RNA with its nucliei is</summary>
+        
+      
+    
+    
+    
+    
+    <category term="spatial transcriptomics" scheme="http://cb11711211.github.io/tags/spatial-transcriptomics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Using zsh as your shell</title>
+    <link href="http://cb11711211.github.io/2022/09/16/using-zsh-as-your-shell/"/>
+    <id>http://cb11711211.github.io/2022/09/16/using-zsh-as-your-shell/</id>
+    <published>2022-09-16T02:52:00.000Z</published>
+    <updated>2022-09-16T03:44:45.886Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;#安装zsh&lt;/span&gt;
+&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="linux" scheme="http://cb11711211.github.io/categories/linux/"/>
+    
+    
+    <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Tree based VS Deep learning</title>
     <link href="http://cb11711211.github.io/2022/09/14/tree-based-vs-deep-learning/"/>
     <id>http://cb11711211.github.io/2022/09/14/tree-based-vs-deep-learning/</id>
     <published>2022-09-14T08:37:49.000Z</published>
-    <updated>2022-09-14T08:37:57.363Z</updated>
+    <updated>2022-09-16T03:46:00.632Z</updated>
     
     
       
@@ -67,7 +141,7 @@
     <link href="http://cb11711211.github.io/2022/09/13/using-conda-to-help-install-r-packages/"/>
     <id>http://cb11711211.github.io/2022/09/13/using-conda-to-help-install-r-packages/</id>
     <published>2022-09-13T12:59:00.000Z</published>
-    <updated>2022-09-15T09:04:38.271Z</updated>
+    <updated>2022-09-16T03:44:29.325Z</updated>
     
     
       
