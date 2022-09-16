@@ -52,9 +52,9 @@
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
 </head>
 
 
@@ -378,7 +378,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    320
+                    434
                 </div>
                 
 
@@ -408,6 +408,13 @@
 <p>If you have a problem when connecting, it would be the disk limitation in your <code>$HOME</code>. And that could affect your normal usage of the server, so if you have limit of disk usage in <code>$HOME</code> disk, you should firstly set a soft link in your server where you have enough disk storage. <code>ln -s /your/disk/free/path /home/yourname/.vscoder-server</code> and it would help you a lot even if you have enough space to download the <code>.vscode-server</code>, because with time flies, your <code>.vscode-server</code> would be bigger and bigger where the vscode store all of its caches and extensions also downloaded in there. </p>
 <p>And there is also an alternative way that you could set in your vscode desktop, and find the setting <code>Remote-ssh:InstallPath</code>, fix it with your hostname and path to install, you would also solve that. </p>
 <h2 id="One-more-thing-about-linux-HOME"><a href="#One-more-thing-about-linux-HOME" class="headerlink" title="One more thing about linux $HOME"></a>One more thing about linux <code>$HOME</code></h2><p>There could be many directory with prefix <code>.</code>, and you should try to control them. Otherwise, they will take over all of your disk of your <code>/home/</code>. For example, <code>.cache</code> directory usually save some zip files contents, it would be disappeared when rebot of the server. But you should watch it out, and clear it when neccessary.</p>
+<h2 id="Alternative-way-to-install-vscode-extensions"><a href="#Alternative-way-to-install-vscode-extensions" class="headerlink" title="Alternative way to install vscode extensions"></a>Alternative way to install vscode extensions</h2><h2 id="Install-from-a-VSIX"><a href="#Install-from-a-VSIX" class="headerlink" title="Install from a VSIX#"></a>Install from a VSIX<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix">#</a></h2><blockquote>
+<p>You can manually install a VS Code extension packaged in a <code>.vsix</code> file. Using the <strong>Install from VSIX</strong> command in the Extensions view command dropdown, or the <strong>Extensions: Install from VSIX</strong> command in the <strong>Command Palette</strong>, point to the <code>.vsix</code> file.</p>
+<p>You can also install using the VS Code <code>--install-extension</code> command-line switch providing the path to the <code>.vsix</code> file.</p>
+<pre class="line-numbers language-none"><code class="language-none">code --install-extension myextension.vsix<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>You may provide the <code>--install-extension</code> multiple times on the command line to install multiple extensions at once.</p>
+<p>If you’d like to learn more about packaging and publishing extensions, see our <a target="_blank" rel="noopener" href="https://code.visualstudio.com/api/working-with-extensions/publishing-extension">Publishing Extensions</a> article in the Extension API.</p>
+</blockquote>
 
                 
             </div>
