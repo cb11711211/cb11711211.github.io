@@ -4,11 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo admin Usage, single-cell">
-    <meta name="description" content="Install hexo-admin# cd to/your/hexo/path/
-npm server -d
-open http://localhost:4000/admin/
-Now enter the page link in bro">
+    <meta name="keywords" content="Cell Segmentation, single-cell">
+    <meta name="description" content="def score_and_mask_pixels(
+    adata: AnnData,
+    layer: str,
+    k: int,
+    method: Literal[&#34;gauss&#34;, &#34;moran&#34;, &#34;EM&#34;, &#34;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +21,7 @@ Now enter the page link in bro">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo admin Usage | wulilichaoBlog</title>
+    <title>Cell Segmentation | wulilichaoBlog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -318,12 +319,12 @@ Now enter the page link in bro">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo admin Usage</h1>
+                    <h1 class="description center-align post-title">Cell Segmentation</h1>
                 </div>
             </div>
         </div>
@@ -347,12 +348,8 @@ Now enter the page link in bro">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/tips/">
-                                <span class="chip bg-color">tips</span>
-                            </a>
-                        
-                            <a href="/tags/blog/">
-                                <span class="chip bg-color">blog</span>
+                            <a href="/tags/spatial-tanscriptomics/">
+                                <span class="chip bg-color">spatial tanscriptomics</span>
                             </a>
                         
                     </div>
@@ -363,8 +360,8 @@ Now enter the page link in bro">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Hexo/" class="post-category">
-                                Hexo
+                            <a href="/categories/spateo/" class="post-category">
+                                spateo
                             </a>
                         
                     </div>
@@ -376,7 +373,7 @@ Now enter the page link in bro">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-11
+                    2022-09-16
                 </div>
                 
 
@@ -385,7 +382,7 @@ Now enter the page link in bro">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    67
+                    783
                 </div>
                 
 
@@ -410,10 +407,126 @@ Now enter the page link in bro">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Install-hexo-admin"><a href="#Install-hexo-admin" class="headerlink" title="Install hexo-admin"></a>Install hexo-admin</h1><pre class="line-numbers language-{shell}" data-language="{shell}"><code class="language-{shell}"># cd to/your/hexo/path/
-npm server -d
-open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>Now enter the page link in browser<br>And click to <code>Settings</code> —&gt; <code>Setup authentification here.</code><br>Setting your log in name, passwd, and secret. (Note that do not set too simple)<br>Then following the instrction to paste the admin-pharses in the <code>_config.yaml</code><br>You could login ine hexo admin and publish your posts</p>
+                <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">score_and_mask_pixels</span><span class="token punctuation">(</span>
+    adata<span class="token punctuation">:</span> AnnData<span class="token punctuation">,</span>
+    layer<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span>
+    k<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span>
+    method<span class="token punctuation">:</span> Literal<span class="token punctuation">[</span><span class="token string">"gauss"</span><span class="token punctuation">,</span> <span class="token string">"moran"</span><span class="token punctuation">,</span> <span class="token string">"EM"</span><span class="token punctuation">,</span> <span class="token string">"EM+gauss"</span><span class="token punctuation">,</span> <span class="token string">"EM+BP"</span><span class="token punctuation">,</span> <span class="token string">"VI+gauss"</span><span class="token punctuation">,</span> <span class="token string">"VI+BP"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    moran_kwargs<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">dict</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    em_kwargs<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">dict</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    vi_kwargs<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">dict</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    bp_kwargs<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">dict</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    threshold<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">float</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    use_knee<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">bool</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    mk<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    bins_layer<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>Union<span class="token punctuation">[</span>Literal<span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    certain_layer<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    scores_layer<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    mask_layer<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Segmentation-approaches"><a href="#Segmentation-approaches" class="headerlink" title="Segmentation approaches"></a>Segmentation approaches</h1><p>All approaches follow the following general steps.</p>
+<ol>
+<li>Apply a 2D convolution (which may be Gaussian or summation) to the UMI count image. The size of the convolution is controlled with the <code>k</code> parameter.</li>
+<li>Obtain per-pixel scores, usually in the range <code>[0, 1]</code>, indicating how likely each pixel is occupied by a cell.</li>
+<li>Apply a threshold to these scores, which is either computed using <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Otsu's_method">Otsu’s method</a> or manually provided with the <code>threshold</code> parameter.</li>
+<li>Apply <a target="_blank" rel="noopener" href="https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html">morphological</a> opening and closing with size <code>mk</code> to fill in holes and remove noise. By default, this value is set to <code>k+2</code> when using the <a target="_blank" rel="noopener" href="https://spateo-release.readthedocs.io/en/latest/technicals/cell_segmentation.html#negative-binomial-mixture-model-methods-including-em-or-vi">Negative binomial mixture model</a>, otherwise to <code>k-2</code>.</li>
+</ol>
+<p>Each of the supported methods differ in how the per-pixel scores (step 2) are calculated.</p>
+<ol>
+<li>Gaussian Blur</li>
+<li>Moran’s I</li>
+<li>NB mixture model</li>
+<li>Belief Propgadation</li>
+</ol>
+<h2 id="The-document-desciption-about-the-score-pixels"><a href="#The-document-desciption-about-the-score-pixels" class="headerlink" title="The document desciption about the score_pixels"></a>The document desciption about the <code>score_pixels</code></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># All methods other than gauss requires EM</span>
+    <span class="token keyword">if</span> method <span class="token operator">==</span> <span class="token string">"gauss"</span><span class="token punctuation">:</span>
+        <span class="token comment"># For just "gauss" method, we should rescale to [0, 1] because all the</span>
+        <span class="token comment"># other methods eventually produce an array of [0, 1] values.</span>
+        res <span class="token operator">=</span> utils<span class="token punctuation">.</span>scale_to_01<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> method <span class="token operator">==</span> <span class="token string">"moran"</span><span class="token punctuation">:</span>
+        res <span class="token operator">=</span> moran<span class="token punctuation">.</span>run_moran<span class="token punctuation">(</span>res<span class="token punctuation">,</span> mask<span class="token operator">=</span><span class="token boolean">None</span> <span class="token keyword">if</span> bins <span class="token keyword">is</span> <span class="token boolean">None</span> <span class="token keyword">else</span> bins <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">**</span>moran_kwargs<span class="token punctuation">)</span>
+        <span class="token comment"># Rescale</span>
+        res <span class="token operator">/=</span> res<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token comment"># Obtain initial parameter estimates with Otsu thresholding.</span>
+        <span class="token comment"># These may be overridden by providing the appropriate kwargs.</span>
+        nb_kwargs <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>params<span class="token operator">=</span>_initial_nb_params<span class="token punctuation">(</span>res<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"em"</span> <span class="token keyword">in</span> method<span class="token punctuation">:</span>
+            nb_kwargs<span class="token punctuation">.</span>update<span class="token punctuation">(</span>em_kwargs<span class="token punctuation">)</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Running EM with kwargs </span><span class="token interpolation"><span class="token punctuation">{</span>nb_kwargs<span class="token punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
+            em_results <span class="token operator">=</span> em<span class="token punctuation">.</span>run_em<span class="token punctuation">(</span>res<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">,</span> <span class="token operator">**</span>nb_kwargs<span class="token punctuation">)</span>
+            conditional_func <span class="token operator">=</span> partial<span class="token punctuation">(</span>em<span class="token punctuation">.</span>conditionals<span class="token punctuation">,</span> em_results<span class="token operator">=</span>em_results<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            nb_kwargs<span class="token punctuation">.</span>update<span class="token punctuation">(</span>vi_kwargs<span class="token punctuation">)</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Running VI with kwargs </span><span class="token interpolation"><span class="token punctuation">{</span>nb_kwargs<span class="token punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
+            vi_results <span class="token operator">=</span> vi<span class="token punctuation">.</span>run_vi<span class="token punctuation">(</span>res<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">,</span> <span class="token operator">**</span>nb_kwargs<span class="token punctuation">)</span>
+            conditional_func <span class="token operator">=</span> partial<span class="token punctuation">(</span>vi<span class="token punctuation">.</span>conditionals<span class="token punctuation">,</span> vi_results<span class="token operator">=</span>vi_results<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token string">"bp"</span> <span class="token keyword">in</span> method<span class="token punctuation">:</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string">"Computing conditionals."</span><span class="token punctuation">)</span>
+            background_cond<span class="token punctuation">,</span> cell_cond <span class="token operator">=</span> conditional_func<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> certain_mask <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                background_cond<span class="token punctuation">[</span>certain_mask<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1e-2</span>
+                cell_cond<span class="token punctuation">[</span>certain_mask<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token number">1e-2</span><span class="token punctuation">)</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Running BP with kwargs </span><span class="token interpolation"><span class="token punctuation">{</span>bp_kwargs<span class="token punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
+            res <span class="token operator">=</span> bp<span class="token punctuation">.</span>run_bp<span class="token punctuation">(</span>background_cond<span class="token punctuation">,</span> cell_cond<span class="token punctuation">,</span> <span class="token operator">**</span>bp_kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string">"Computing confidences."</span><span class="token punctuation">)</span>
+            res <span class="token operator">=</span> em<span class="token punctuation">.</span>confidence<span class="token punctuation">(</span>res<span class="token punctuation">,</span> em_results<span class="token operator">=</span>em_results<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> certain_mask <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                res <span class="token operator">=</span> np<span class="token punctuation">.</span>clip<span class="token punctuation">(</span>res <span class="token operator">+</span> certain_mask<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token string">"gauss"</span> <span class="token keyword">in</span> method<span class="token punctuation">:</span>
+            lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string">"Computing Gaussian blur."</span><span class="token punctuation">)</span>
+            res <span class="token operator">=</span> utils<span class="token punctuation">.</span>conv2d<span class="token punctuation">(</span>res<span class="token punctuation">,</span> k<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">"gauss"</span><span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">""</span>"Score each pixel by how likely it <span class="token keyword">is</span> a cell<span class="token punctuation">.</span> Values returned are <span class="token keyword">in</span>
+    <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>
+
+    Args<span class="token punctuation">:</span>
+        X<span class="token punctuation">:</span> UMI counts per pixel <span class="token keyword">as</span> either a sparse <span class="token keyword">or</span> dense array<span class="token punctuation">.</span>
+        k<span class="token punctuation">:</span> Kernel size <span class="token keyword">for</span> convolution<span class="token punctuation">.</span>
+        method<span class="token punctuation">:</span> Method to use<span class="token punctuation">.</span> Valid methods are<span class="token punctuation">:</span>
+            gauss<span class="token punctuation">:</span> Gaussian blur
+            moran<span class="token punctuation">:</span> Moran's I based method
+            EM<span class="token punctuation">:</span> EM algorithm to estimate cell <span class="token keyword">and</span> background expression
+                parameters<span class="token punctuation">.</span>
+            EM<span class="token operator">+</span>gauss<span class="token punctuation">:</span> Negative binomial EM algorithm followed by Gaussian blur<span class="token punctuation">.</span>
+            EM<span class="token operator">+</span>BP<span class="token punctuation">:</span> EM algorithm followed by belief propagation to estimate the
+                marginal probabilities of cell <span class="token keyword">and</span> background<span class="token punctuation">.</span>
+            VI<span class="token operator">+</span>gauss<span class="token punctuation">:</span> Negative binomial VI algorithm followed by Gaussian blur<span class="token punctuation">.</span>
+                Note that VI also supports the zero<span class="token operator">-</span>inflated negative binomial <span class="token punctuation">(</span>ZINB<span class="token punctuation">)</span>
+                by providing `zero_inflated<span class="token operator">=</span><span class="token boolean">True</span>`<span class="token punctuation">.</span>
+            VI<span class="token operator">+</span>BP<span class="token punctuation">:</span> VI algorithm followed by belief propagation<span class="token punctuation">.</span> Note that VI also
+                supports the zero<span class="token operator">-</span>inflated negative binomial <span class="token punctuation">(</span>ZINB<span class="token punctuation">)</span> by providing
+                `zero_inflated<span class="token operator">=</span><span class="token boolean">True</span>`<span class="token punctuation">.</span>
+        moran_kwargs<span class="token punctuation">:</span> Keyword arguments to the <span class="token punctuation">:</span>func<span class="token punctuation">:</span>`moran<span class="token punctuation">.</span>run_moran` function<span class="token punctuation">.</span>
+        em_kwargs<span class="token punctuation">:</span> Keyword arguments to the <span class="token punctuation">:</span>func<span class="token punctuation">:</span>`em<span class="token punctuation">.</span>run_em` function<span class="token punctuation">.</span>
+        bp_kwargs<span class="token punctuation">:</span> Keyword arguments to the <span class="token punctuation">:</span>func<span class="token punctuation">:</span>`bp<span class="token punctuation">.</span>run_bp` function<span class="token punctuation">.</span>
+        certain_mask<span class="token punctuation">:</span> A boolean Numpy array indicating which pixels are certain
+            to be occupied<span class="token punctuation">,</span> a<span class="token operator">-</span>priori<span class="token punctuation">.</span> For example<span class="token punctuation">,</span> <span class="token keyword">if</span> nuclei staining <span class="token keyword">is</span> available<span class="token punctuation">,</span>
+            this would be the nuclei segmentation mask<span class="token punctuation">.</span>
+        bins<span class="token punctuation">:</span> Pixel bins to segment separately<span class="token punctuation">.</span> Only takes effect when the EM
+            algorithm <span class="token keyword">is</span> run<span class="token punctuation">.</span>
+
+    Returns<span class="token punctuation">:</span>
+        <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span> score of each pixel being a cell<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="score-and-mask-pixels-code"><a href="#score-and-mask-pixels-code" class="headerlink" title="score_and_mask_pixels() code"></a>score_and_mask_pixels() code</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">X <span class="token operator">=</span> SKM<span class="token punctuation">.</span>select_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> layer<span class="token punctuation">,</span> make_dense<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    certain_mask <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">if</span> certain_layer<span class="token punctuation">:</span>
+        certain_mask <span class="token operator">=</span> SKM<span class="token punctuation">.</span>select_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> certain_layer<span class="token punctuation">)</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">)</span>
+    bins <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">if</span> bins_layer <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">False</span><span class="token punctuation">:</span>
+        bins_layer <span class="token operator">=</span> bins_layer <span class="token keyword">or</span> SKM<span class="token punctuation">.</span>gen_new_layer_key<span class="token punctuation">(</span>layer<span class="token punctuation">,</span> SKM<span class="token punctuation">.</span>BINS_SUFFIX<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> bins_layer <span class="token keyword">in</span> adata<span class="token punctuation">.</span>layers<span class="token punctuation">:</span>
+            bins <span class="token operator">=</span> SKM<span class="token punctuation">.</span>select_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> bins_layer<span class="token punctuation">)</span>
+    method <span class="token operator">=</span> method<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    lm<span class="token punctuation">.</span>main_info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Scoring pixels with </span><span class="token interpolation"><span class="token punctuation">{</span>method<span class="token punctuation">}</span></span><span class="token string"> method."</span></span><span class="token punctuation">)</span>
+    scores <span class="token operator">=</span> _score_pixels<span class="token punctuation">(</span>X<span class="token punctuation">,</span> k<span class="token punctuation">,</span> method<span class="token punctuation">,</span> moran_kwargs<span class="token punctuation">,</span> em_kwargs<span class="token punctuation">,</span> vi_kwargs<span class="token punctuation">,</span> bp_kwargs<span class="token punctuation">,</span> certain_mask<span class="token punctuation">,</span> bins<span class="token punctuation">)</span>
+    scores_layer <span class="token operator">=</span> scores_layer <span class="token keyword">or</span> SKM<span class="token punctuation">.</span>gen_new_layer_key<span class="token punctuation">(</span>layer<span class="token punctuation">,</span> SKM<span class="token punctuation">.</span>SCORES_SUFFIX<span class="token punctuation">)</span>
+    SKM<span class="token punctuation">.</span>set_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> scores_layer<span class="token punctuation">,</span> scores<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>The packages is using SKM to manage its data_loading and data_saving. </p>
+<p><code>SKM.select_layer_data(adata, layer, make_dense=True)</code> means to select the layer of anndata and using dense matrix rather than sparse matrix.</p>
+<p><code>SKM.set_layer_data(adata, scores_layer, scores)</code> means to save the data in layer of anndata and name it scores_layer, scores is the data matrix.</p>
 
                 
             </div>
@@ -430,7 +543,7 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">wulichao</a>
+                    <a href="/about" rel="external nofollow noreferrer">Wulilichao</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -440,7 +553,7 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cb11711211.github.io/2022/09/11/hexo-admin-usage/">http://cb11711211.github.io/2022/09/11/hexo-admin-usage/</a>
+                    <a href="http://cb11711211.github.io/2022/09/16/cell-segmentation/">http://cb11711211.github.io/2022/09/16/cell-segmentation/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -453,7 +566,7 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">wulichao</a>
+                    <a href="/about" target="_blank">Wulilichao</a>
                     !
                 </span>
             </div>
@@ -478,12 +591,8 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/tips/">
-                                    <span class="chip bg-color">tips</span>
-                                </a>
-                            
-                                <a href="/tags/blog/">
-                                    <span class="chip bg-color">blog</span>
+                                <a href="/tags/spatial-tanscriptomics/">
+                                    <span class="chip bg-color">spatial tanscriptomics</span>
                                 </a>
                             
                         </div>
@@ -529,17 +638,18 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/09/12/tmux-command/">
+                <a href="/2022/09/16/cell-segmentation/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="tmux command">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Cell Segmentation">
                         
-                        <span class="card-title">tmux command</span>
+                        <span class="card-title">Cell Segmentation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -549,16 +659,29 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Wulilichao
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spateo/" class="post-category">
+                                    spateo
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spatial-tanscriptomics/">
+                        <span class="chip bg-color">spatial tanscriptomics</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -570,13 +693,13 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/11/hello-world/">
+                <a href="/2022/09/16/vscode-in-linux/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="VScode in linux">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">VScode in linux</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -587,15 +710,27 @@ open http://localhost:4000/admin/<span aria-hidden="true" class="line-numbers-ro
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Wulilichao
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tips/">
+                        <span class="chip bg-color">tips</span>
+                    </a>
+                    
                 </div>
                 
             </div>

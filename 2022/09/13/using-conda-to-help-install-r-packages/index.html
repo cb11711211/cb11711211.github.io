@@ -52,9 +52,9 @@
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
-
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
 </head>
 
 
@@ -382,7 +382,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    296
+                    334
                 </div>
                 
 
@@ -413,13 +413,14 @@
 <pre class="line-numbers language-{bash}" data-language="{bash}"><code class="language-{bash}">conda create -n my-env python=x.x
 conda activate [env-name]
 conda install -c r r-base # install the r packages that is not easily installed through conda<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>The <code>conda install</code> in any environment would install the packages</p>
+<h3 id="Using-jupyter-kernel"><a href="#Using-jupyter-kernel" class="headerlink" title="Using jupyter kernel"></a>Using jupyter kernel</h3><p>When you create a new conda environment, you could install ipykernel and IRkernel using the packages in this environments through<br></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>m ipykernel install <span class="token operator">-</span><span class="token operator">-</span>user <span class="token operator">-</span><span class="token operator">-</span>name $<span class="token punctuation">{</span>name<span class="token operator">/</span>of<span class="token operator">/</span>your<span class="token operator">/</span>kernel<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>and in R<br><pre class="line-numbers language-R" data-language="R"><code class="language-R">install.packages("IRkernel")
+IRkernel::install_spec()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
+<p>The <code>conda install</code> would install the packages in any environment</p>
 <h2 id="conda-install-r-packages"><a href="#conda-install-r-packages" class="headerlink" title="conda install r-packages"></a>conda install r-packages</h2><p>If you find some packages could not install from CRAN through <code>install.packages()</code> in R, and the warning log says that there is some missing lib you may not install. You could easily fix that if you have <code>sudo</code> authority, however, the install of missing support could not easily if you are not root. So, I encourage to use packages manager tools like conda to achieve that.</p>
 <p>When you are encountering some trouble in installation, you could firstly google <code>conda install $packages_name</code>. Usually, the conda channel r could have the packages in repository. And you could easily install it through <code>conda install</code>. And if there are more problems, you may have to search for configuring it through source, but some development support could also be installed through conda. So that, conda could save your life, if you are not roor user.</p>
 <p>When you encounter other problems, try install the missing support packages through this way.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># unable to execute 'x86_64-conda_cos6-linux-gnu-gcc': No such file or directory </span>
 conda <span class="token function">install</span> gxx_linux-64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
                 
             </div>
             <hr/>
