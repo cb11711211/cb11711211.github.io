@@ -1,0 +1,1233 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="scBERT, single-cell">
+    <meta name="description" content="BackgroundBERT is used in nature language processing (NLP) to find the correlation between context, and translate from o">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>scBERT | wulilichaoBlog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="wulilichaoBlog" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/save-money.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">wulilichaoBlog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Friends</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/save-money.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wulilichaoBlog</div>
+        <div class="logo-desc">
+            
+            layman in Bioinfo
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Friends
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/cb11711211/cb11711211.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/cb11711211/cb11711211.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">scBERT</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/attention/">
+                                <span class="chip bg-color">attention</span>
+                            </a>
+                        
+                            <a href="/tags/cell-type-annotation/">
+                                <span class="chip bg-color">cell type annotation</span>
+                            </a>
+                        
+                            <a href="/tags/algorithm/">
+                                <span class="chip bg-color">algorithm</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/deep-learning/" class="post-category">
+                                deep learning
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-09-30
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.2k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>BERT is used in nature language processing (NLP) to find the correlation between context, and translate from one language to others. Here, the researchers in Tencent, developing a method applied BERT to predict the linkage in single-cell RNA-seq datasets to annotate the cell types of the new single-cell data. BERT model has been identified as in short of recognize the logical structure in the text. What could be done to improve the ability to implement causal inference and other advanced learning task is the major object for researchers focusing on transformer generally using.<br>Using one single, uniform deep learning framework to extract all specific features from these different omics datasets has become a more and more realistic task for deep learning researchers.  And I think that even the design of scBERT is not perfect which have many risks in their neural network input embedding, however, more and more works in this fields show its promising ability to ultimately finish the task.</p>
+<h1 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h1><p><img src="/2022/09/30/scbert/image-20221002153638892.png" alt="Self-supervised pre-training and unlabeled scRNA-seq data embedding"></p>
+<p><img src="/2022/09/30/scbert/image-20221002153904173.png" alt="Illustrating the embeddings of scBERT"></p>
+<h1 id="Processing"><a href="#Processing" class="headerlink" title="Processing"></a>Processing</h1><p>The input of the structure including the self-supervised pre-training and supervised finetuning. </p>
+<h3 id="self-supervised-pre-training"><a href="#self-supervised-pre-training" class="headerlink" title="self-supervised pre-training"></a>self-supervised pre-training</h3><p>For self-supervised pre-training stage, the collected single-cell RNA-seq datasets are trained to extract features of genes and expression profile. This process could be described as follow: firstly to random mask some expression profile of genes and then to do expression embedding plus the gene embedding. The Gene embedding operation is adapted from Gene2vec. The co-expression genes are extracted to have a similar eigen value, which means to embed them. The combination of expression embedding and gene embedding then inputting in performer layers to implement self-attention to find features, which is the performer encoding operation.</p>
+<h3 id="supervised-fine-tuning"><a href="#supervised-fine-tuning" class="headerlink" title="supervised fine-tuning"></a>supervised fine-tuning</h3><p>This process is using labeled scRNA-seq datasets to train the classifier which could annotate the types of these cells. In the detail, the data has been encoded through the same steps in pre-training stage. Embedding the expression profile and gene vector, and then processing in performer encoder which is trained in pre-training stage. The decoder will reconstruct the expression profile, and using fully connected layers to classify the cell-type. </p>
+<h2 id="Embedding-in-practice"><a href="#Embedding-in-practice" class="headerlink" title="Embedding in practice"></a>Embedding in practice</h2><p>The gene embedding E_G1 (the gene identity from gene2vec falling into the first bin) and the expression embedding E_B2 (the gene expression falling into the second bin and being transformed to the same dimension as the E_G1) are summed and fed into scBERT to generate representations for genes.</p>
+<p>The binned expression profile of a single-cell could be done by binning the profile of scRNA-seq data. </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">binning_expression</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> bins<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> np<span class="token punctuation">.</span>log2<span class="token punctuation">(</span>data <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    data <span class="token operator">=</span> np<span class="token punctuation">.</span>digitize<span class="token punctuation">(</span>data<span class="token punctuation">,</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> bins<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Each single-cell RNA-seq dataset are then processed by performer encoder which is a transformer adapted to single-cell RNA-seq data.</p>
+<h1 id="Performer"><a href="#Performer" class="headerlink" title="Performer"></a>Performer</h1><h3 id="Dot-Product-attention"><a href="#Dot-Product-attention" class="headerlink" title="Dot-Product attention"></a>Dot-Product attention</h3><script type="math/tex; mode=display">
+\begin{equation}Attention(\boldsymbol{Q},\boldsymbol{K},\boldsymbol{V}) = softmax\left(\frac{\boldsymbol{Q}\boldsymbol{K}^{\top}}{\sqrt{d_k}}\right)\boldsymbol{V}\end{equation}</script><p>The scBERT is based on the Performer architecture proposed by Google in 2020, which is an advanced progress on transformer attention mechanism. For raw dot-product attention, the complexity of computing attention is $O(L^2n)$ which is much higher than $O(L n^2)$ for convolution. So that, there have been proposed many isoformers of transformer to lower its complexity to $O(Nlog(n))$ or even $O(N)$. <strong>Performer</strong> is one of them, and it has a much stronger math proving. </p>
+<h2 id="Linear-Attention"><a href="#Linear-Attention" class="headerlink" title="Linear Attention"></a>Linear Attention</h2><p><a target="_blank" rel="noopener" href="https://spaces.ac.cn/archives/7546">Linear attention</a></p>
+<p>Most of time, $ Q \in \R^{n \times d_k}, K \in \R^{m \times d_k}, V \in \R^{m \times d_v} $, $ n &gt; d $ or $ n &gt;&gt; d $. Softmax in attention is the process that limit the speed, so that an attention model deleted softmax is called linear attention and the complexity is $ O(n) $. </p>
+<p>Query is the raw data, Key is the type of features of the data, and Value is the value of the type of features in this curriculum. </p>
+<p>The definition of scaled-dot product attention:</p>
+<script type="math/tex; mode=display">
+Attention(\boldsymbol{Q},\boldsymbol{K},\boldsymbol{V})_i = \frac{\sum\limits_{j=1}^n e^{\boldsymbol{q}_i^{\top}\boldsymbol{k}_j}\boldsymbol{v}_j}{\sum\limits_{j=1}^n e^{\boldsymbol{q}_i^{\top}\boldsymbol{k}_j}}</script><p>More generally definition:</p>
+<script type="math/tex; mode=display">
+Attention(\boldsymbol{Q},\boldsymbol{K},\boldsymbol{V})_i = \frac{\sum\limits_{j=1}^n \text{sim}(\boldsymbol{q}_i, \boldsymbol{k}_j)\boldsymbol{v}_j}{\sum\limits_{j=1}^n \text{sim}(\boldsymbol{q}_i, \boldsymbol{k}_j)}</script><p>$ sim() \gt= 0$ is a more generally function which used to compute the similarity of the query and feature. Often called Non-local neural network.</p>
+<h3 id="Kernel-function"><a href="#Kernel-function" class="headerlink" title="Kernel function"></a>Kernel function</h3><script type="math/tex; mode=display">
+\text{sim}(q_i, k_j) = \phi(q_i)^{\top} \varphi(k_j)</script><p><em>Transformers are RNNs: Fast autoregressive Transformers with Linear Attention</em> uses $ \phi(x) = \varphi(x) = \text{elu}(x) + 1 $.</p>
+<h3 id="Fast-attention-Via-positive-orthogonal-Random-Features"><a href="#Fast-attention-Via-positive-orthogonal-Random-Features" class="headerlink" title="Fast attention Via positive orthogonal Random Features"></a>Fast attention Via positive orthogonal Random Features</h3><p>Kernel function: Gaussian kernel to model Softmax kernel</p>
+<p>Random feature map: generate Gaussian kernel </p>
+<p>Positive random features (PRF): to ensure the value in softmax kernel is positive and unbiased approximation</p>
+<p>Orthogonal Random feature: to lower the features in used for PRF, and also ensure the positive</p>
+<p><img src="/2022/09/30/scbert/image-20221010090319861.png" alt="Kernel function"></p>
+<h3 id="Random-Features"><a href="#Random-Features" class="headerlink" title="Random Features"></a>Random Features</h3><p>Firstly, let’s think about the sim(q,k) function, we could transform it like that:</p>
+<script type="math/tex; mode=display">
+\begin{equation}\text{sim}(\boldsymbol{q}, \boldsymbol{k}) = \frac{\beta(\boldsymbol{q})\gamma(\boldsymbol{k})\text{sim}(\boldsymbol{q}, \boldsymbol{k})}{\beta(\boldsymbol{q})\gamma(\boldsymbol{k})}\end{equation}</script><p>and the $ \beta(\boldsymbol{x})=\gamma(\boldsymbol{x})=e^{-\lambda\Vert x\Vert^2} $ is trying to make sure the FT could generate a properly result preventing the result is meaningless. From linear attention, the task we need to solve is to find a <strong>non-negative</strong> kernel function which could simulate the distribution of Softmax function. For the upper part $ \beta(\boldsymbol{q})\gamma(\boldsymbol{k})\text{sim}(\boldsymbol{q}, \boldsymbol{k}) $.  We could implement Fourier Transform: </p>
+<script type="math/tex; mode=display">
+\begin{equation}\mathcal{F}(\boldsymbol{\omega}_q, \boldsymbol{\omega}_k)=\frac{1}{(2\pi)^{d/2}}\int \beta(\boldsymbol{q})\gamma(\boldsymbol{k})\text{sim}(\boldsymbol{q}, \boldsymbol{k})e^{-i\boldsymbol{\omega}_q\cdot \boldsymbol{q}-i\boldsymbol{\omega}_k\cdot \boldsymbol{k}}d\boldsymbol{q}d\boldsymbol{k}\end{equation}</script><p>And backward the equation for $sim(\boldsymbol{q}, \boldsymbol{k})$: </p>
+<script type="math/tex; mode=display">
+\begin{equation}\text{sim}(\boldsymbol{q}, \boldsymbol{k})=\frac{1}{(2\pi)^{d/2}}\int \mathcal{F}(\boldsymbol{\omega}_q, \boldsymbol{\omega}_k)\frac{e^{i\boldsymbol{\omega}_q\cdot \boldsymbol{q}}}{\beta(\boldsymbol{q})} \frac{e^{i\boldsymbol{\omega}_k\cdot \boldsymbol{k}}}{\gamma(\boldsymbol{k})}d\boldsymbol{\omega}_q d\boldsymbol{\omega}_k\end{equation}</script><p>Alternatively, if you have the idea that, we just need a kernel, you could also do:</p>
+<script type="math/tex; mode=display">
+\begin{equation}e^{\boldsymbol{q}\cdot \boldsymbol{k}} = e^{\Vert \boldsymbol{q}\Vert^2 / 2 + \Vert \boldsymbol{k}\Vert^2 / 2 - \Vert\boldsymbol{q}-\boldsymbol{k}\Vert^2 / 2}\end{equation}</script><p>Notice that $\exp(||\boldsymbol{q}-\boldsymbol{k}||^2/2)$ is the gaussian kernel, and for gaussian kernel, there are many methods to insure the non-negative output. Here, we could implement FT for the gaussian kernel:</p>
+<script type="math/tex; mode=display">
+\begin{equation}e^{\boldsymbol{q}\cdot \boldsymbol{k}}=\frac{e^{\Vert \boldsymbol{q}\Vert^2 / 2 + \Vert \boldsymbol{k}\Vert^2 / 2}}{(2\pi)^{d/2}}\int e^{-\Vert\boldsymbol{\omega}\Vert^2 / 2 + i \boldsymbol{\omega}\cdot (\boldsymbol{q} - \boldsymbol{k})} d\boldsymbol{\omega}\end{equation}</script><p>let $ q \to iq, k \to {-ik} $：you could delete the i part in this equation, and the next step is to compute a integer solving which should be done through sampling, because this integral is not easy to compute.</p>
+<script type="math/tex; mode=display">
+\begin{equation}e^{\boldsymbol{q}\cdot \boldsymbol{k}}=\frac{e^{-\Vert \boldsymbol{q}\Vert^2 / 2 - \Vert \boldsymbol{k}\Vert^2 / 2}}{(2\pi)^{d/2}}\int e^{-\Vert\boldsymbol{\omega}\Vert^2 / 2 + \boldsymbol{\omega}\cdot (\boldsymbol{q} + \boldsymbol{k})} d\boldsymbol{\omega}\end{equation}</script><p>For this part, the equation in the right means that if we sampling many times the $w$ from a $d$ dimension $(0,1)$ normal distribution and the expectation of the function $ e^{\boldsymbol{\omega}\cdot \boldsymbol{q}-\Vert \boldsymbol{q}\Vert^2 / 2} \times e^{\boldsymbol{\omega}\cdot \boldsymbol{k}-\Vert \boldsymbol{k}\Vert^2 / 2}$ could represents the result of $e^{\boldsymbol{q}\cdot\boldsymbol{k}}$. However, in normal, we could not enumerate the $w$ in unlimited times, the resulting sampling is just the approximation. But in practice, the m larger than 1000 seems have a good performance.</p>
+<script type="math/tex; mode=display">
+\begin{equation}\begin{aligned} 
+e^{\boldsymbol{q}\cdot \boldsymbol{k}}&=\mathbb{E}_{\boldsymbol{\omega}\sim \mathcal{N}(\boldsymbol{\omega};0,\boldsymbol{1}_d)}\left[e^{\boldsymbol{\omega}\cdot \boldsymbol{q}-\Vert \boldsymbol{q}\Vert^2 / 2} \times e^{\boldsymbol{\omega}\cdot \boldsymbol{k}-\Vert \boldsymbol{k}\Vert^2 / 2}\right]\\[6pt] 
+&\approx\underbrace{\frac{1}{\sqrt{m}}\begin{pmatrix}e^{\boldsymbol{\omega}_1\cdot \boldsymbol{q}-\Vert \boldsymbol{q}\Vert^2 / 2} \\ 
+e^{\boldsymbol{\omega}_2\cdot \boldsymbol{q}-\Vert \boldsymbol{q}\Vert^2 / 2}\\ 
+\vdots\\ 
+e^{\boldsymbol{\omega}_m\cdot \boldsymbol{q}-\Vert \boldsymbol{q}\Vert^2 / 2} \end{pmatrix}}_{\tilde{\boldsymbol{q}}} 
+\cdot  \underbrace{\frac{1}{\sqrt{m}}\begin{pmatrix}e^{\boldsymbol{\omega}_1\cdot \boldsymbol{k}-\Vert \boldsymbol{k}\Vert^2 / 2} \\ 
+e^{\boldsymbol{\omega}_2\cdot \boldsymbol{k}-\Vert \boldsymbol{k}\Vert^2 / 2}\\ 
+\vdots\\ 
+e^{\boldsymbol{\omega}_m\cdot \boldsymbol{k}-\Vert \boldsymbol{k}\Vert^2 / 2} \end{pmatrix}}_{\tilde{\boldsymbol{k}}} 
+\end{aligned}\label{eq:core}\end{equation}</script><h3 id="Prefix-sums"><a href="#Prefix-sums" class="headerlink" title="Prefix sums"></a>Prefix sums</h3><p>unidirectional attention: storage the computational total sum of attention rather than lower triangle matrix.</p>
+<p><img src="/2022/09/30/scbert/image-20221010090500379.png" alt="prefix-sum mechnism"></p>
+<h3 id="Fast-attention-code"><a href="#Fast-attention-code" class="headerlink" title="Fast attention code"></a>Fast attention code</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># linear attention classes with softmax kernel</span>
+
+<span class="token comment"># non-causal linear attention</span>
+<span class="token keyword">def</span> <span class="token function">linear_attention</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># do softmax for k firstly in the second last dimension</span>
+    k_cumsum <span class="token operator">=</span> k<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token comment"># do scale for dot product of q, k</span>
+    D_inv <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">/</span>torch<span class="token punctuation">.</span>einsum<span class="token punctuation">(</span><span class="token string">'...nd,...d-&gt;...n'</span><span class="token punctuation">,</span> q<span class="token punctuation">,</span> k_cumsum<span class="token punctuation">.</span>type_as<span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment"># do k dot product v</span>
+    context <span class="token operator">=</span> torch<span class="token punctuation">.</span>einsum<span class="token punctuation">(</span><span class="token string">'...nd,...ne-&gt;...de'</span><span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    <span class="token comment"># do the attention</span>
+    out <span class="token operator">=</span> torch<span class="token punctuation">.</span>einsum<span class="token punctuation">(</span><span class="token string">'...de,...nd,...n-&gt;...ne'</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> q<span class="token punctuation">,</span> D_inv<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> out
+
+<span class="token comment"># efficient causal linear attention, created by EPEL</span>
+<span class="token keyword">def</span> <span class="token function">causal_linear_attention</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">,</span> eps<span class="token operator">=</span><span class="token number">1e-6</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">from</span> fast_transforms<span class="token punctuation">.</span>causla_product <span class="token keyword">import</span> CausalDotProduct
+    autocast_enabled <span class="token operator">=</span> torch<span class="token punctuation">.</span>is_autocast_enabled<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    is_half <span class="token operator">=</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>HalfTensor<span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token keyword">not</span> is_half <span class="token keyword">or</span> APEX_AVAILABLE<span class="token punctuation">,</span> <span class="token string">'half tensors can only be used if nvidia apex is available'</span>
+    cuda_context <span class="token operator">=</span> null_context <span class="token keyword">if</span> <span class="token keyword">not</span> autocast_enabled <span class="token keyword">else</span> partial<span class="token punctuation">(</span>autocast<span class="token punctuation">,</span> enabled <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span>
+    causal_dot_product_fn <span class="token operator">=</span> amp<span class="token punctuation">.</span>float_function<span class="token punctuation">(</span>CausalDotProduct<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">)</span> <span class="token keyword">if</span> is_half <span class="token keyword">else</span> CausalDotProduct<span class="token punctuation">.</span><span class="token builtin">apply</span>
+    
+    k_cumsum <span class="token operator">=</span> k<span class="token punctuation">.</span>cumsum<span class="token punctuation">(</span>dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> eps
+    D_inv <span class="token operator">=</span> <span class="token number">1.</span> <span class="token operator">/</span> torch<span class="token punctuation">.</span>einsum<span class="token punctuation">(</span><span class="token string">'...nd,...nd-&gt;...n'</span><span class="token punctuation">,</span> q<span class="token punctuation">,</span> k_cumsum<span class="token punctuation">.</span>type_as<span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">with</span> cuda_context<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> autocast_enabled<span class="token punctuation">:</span>
+            q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> t<span class="token punctuation">:</span> t<span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        out <span class="token operator">=</span> causual_dot_product_fn<span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    out <span class="token operator">=</span> torch<span class="token punctuation">.</span>einsum<span class="token punctuation">(</span><span class="token string">'...nd,...n-&gt;...nd'</span><span class="token punctuation">,</span> out<span class="token punctuation">,</span> D_inv<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> out
+
+<span class="token keyword">class</span> <span class="token class-name">FastAttention</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dim_heads<span class="token punctuation">,</span> nb_features <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> ortho_scaling <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> casual <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span> generalized_attention <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span> kernel_fn <span class="token operator">=</span> nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> no_projection <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        nb_features <span class="token operator">=</span> default<span class="token punctuation">(</span>nb_features<span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>dim_heads <span class="token operator">*</span> math<span class="token punctuation">.</span>log<span class="token punctuation">(</span>dim_heads<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        self<span class="token punctuation">.</span>dim_heads <span class="token operator">=</span> dim_heads
+        self<span class="token punctuation">.</span>nb_features <span class="token operator">=</span> nb_features
+        self<span class="token punctuation">.</span>ortho_scaling <span class="token operator">=</span> ortho_scaling
+        <span class="token comment"># gaussian_orthogonal_random_matrix is predefined in parameters, and use partial to reuse to definition and also fill the parameters</span>
+        self<span class="token punctuation">.</span>create_projection <span class="token operator">=</span> partial<span class="token punctuation">(</span>gaussian_orthogonal_random_matrix<span class="token punctuation">,</span> nb_rows <span class="token operator">=</span> self<span class="token punctuation">.</span>nb_features<span class="token punctuation">,</span> nb_columns <span class="token operator">=</span> dim_heads<span class="token punctuation">,</span> scaling <span class="token operator">=</span> ortho_scaling<span class="token punctuation">)</span>
+        projection_matrix <span class="token operator">=</span> self<span class="token punctuation">.</span>create_projection<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>register_buffer<span class="token punctuation">(</span><span class="token string">'projection_matrix'</span><span class="token punctuation">,</span> projection_matrix<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>kernel_fn <span class="token operator">=</span> kernel_fn
+        
+        <span class="token comment"># if this is turned on, no projection will be used</span>
+        <span class="token comment"># queries and keys will be softmax-ed as in the original efficient attention paper</span>
+        self<span class="token punctuation">.</span>no_projection <span class="token operator">=</span> no_projection
+
+        self<span class="token punctuation">.</span>causal <span class="token operator">=</span> causal
+        <span class="token keyword">if</span> causal<span class="token punctuation">:</span>
+            <span class="token keyword">try</span><span class="token punctuation">:</span>
+                <span class="token keyword">import</span> fast_transformers<span class="token punctuation">.</span>causal_product<span class="token punctuation">.</span>causal_product_cuda
+                self<span class="token punctuation">.</span>causal_linear_fn <span class="token operator">=</span> partial<span class="token punctuation">(</span>causal_linear_attention<span class="token punctuation">)</span>
+            <span class="token keyword">except</span> ImportError<span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'unable to import cuda code for auto-regressive Performer. will default to the memory inefficient non-cuda version'</span><span class="token punctuation">)</span>
+                self<span class="token punctuation">.</span>causal_linear_fn <span class="token operator">=</span> causal_linear_attention_noncuda
+        
+        <span class="token decorator annotation punctuation">@torch<span class="token punctuation">.</span>no_grad</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">def</span> <span class="token function">redraw_projection_matrix</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> device<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            projections <span class="token operator">=</span> self<span class="token punctuation">.</span>create_projection<span class="token punctuation">(</span>device <span class="token operator">=</span> device<span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>projection_matrix<span class="token punctuation">.</span>copy_<span class="token punctuation">(</span>projections<span class="token punctuation">)</span>
+            <span class="token keyword">del</span> projections
+           
+        <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">,</span> output_attentions <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            device <span class="token operator">=</span> q<span class="token punctuation">.</span>device
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>no_projection<span class="token punctuation">:</span>
+                q <span class="token operator">=</span> q<span class="token punctuation">.</span>softmax<span class="token punctuation">(</span>dim <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+                k <span class="token operator">=</span> torch<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token keyword">if</span> self<span class="token punctuation">.</span>causal <span class="token keyword">else</span> k<span class="token punctuation">.</span>softmax<span class="token punctuation">(</span>dim <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
+                
+            <span class="token keyword">elif</span> self<span class="token punctuation">.</span>generalized_attention<span class="token punctuation">:</span>
+                create_kernel <span class="token operator">=</span> partial<span class="token punctuation">(</span>generalized_kernel<span class="token punctuation">,</span> kernel_fn <span class="token operator">=</span> self<span class="token punctuation">.</span>kernel_fn<span class="token punctuation">,</span> projection_matrix <span class="token operator">=</span> self<span class="token punctuation">.</span>projection_matrix<span class="token punctuation">,</span> device <span class="token operator">=</span> device<span class="token punctuation">)</span>
+            
+        	<span class="token keyword">else</span><span class="token punctuation">:</span>
+                create_kernel <span class="token operator">=</span> partial<span class="token punctuation">(</span>softmax_kernel<span class="token punctuation">,</span> projection_matrix <span class="token operator">=</span> self<span class="token punctuation">.</span>projection_matrix<span class="token punctuation">,</span> device <span class="token operator">=</span> device<span class="token punctuation">)</span>
+                q <span class="token operator">=</span> create_kernel<span class="token punctuation">(</span>q<span class="token punctuation">,</span> is_query<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+                k <span class="token operator">=</span> create_kernel<span class="token punctuation">(</span>k<span class="token punctuation">,</span> is_query<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+            
+            attn_fn <span class="token operator">=</span> linear_attention <span class="token keyword">if</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>causal <span class="token keyword">else</span> self<span class="token punctuation">.</span>causal_linear_fn
+            out <span class="token operator">=</span> attn_fn<span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+            <span class="token comment"># </span>
+            <span class="token keyword">if</span> output_attentions<span class="token punctuation">:</span>
+                v_diag <span class="token operator">=</span> torch<span class="token punctuation">.</span>eye<span class="token punctuation">(</span>v<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+                v_diag <span class="token operator">=</span> v_diag<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>repeat<span class="token punctuation">(</span>v<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+                attn_weights <span class="token operator">=</span> torch<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> q<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> q<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>float16<span class="token punctuation">)</span>
+                <span class="token keyword">for</span> head_dim <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    attn_weights <span class="token operator">+=</span> torch<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>attn_fn<span class="token punctuation">(</span>q<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>head_dim<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>float15<span class="token punctuation">)</span><span class="token punctuation">,</span> k<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>head_dim<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>float16<span class="token punctuation">)</span><span class="token punctuation">,</span> v_diag<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span>head_dim<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>troch<span class="token punctuation">.</span>float16<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                attn_weights <span class="token operator">/=</span> q<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+                <span class="token keyword">return</span> out<span class="token punctuation">,</span> attn_weights
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> out<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h1><p>The result of the scBERT is quite good, and most of the cell clusters could be annotated correctly and the UMAP plot shows a high consistence with the ground truth.</p>
+<p><img src="/2022/09/30/scbert/image-20221016165325204.png" alt="Result of auto-annotation"></p>
+<p>Thanks for blog: sciencespace.cn. Most of the mathmatical operation and ideas comes from this blog. <linear attention=""></linear></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Wulilichao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://cb11711211.github.io/2022/09/30/scbert/">http://cb11711211.github.io/2022/09/30/scbert/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Wulilichao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/attention/">
+                                    <span class="chip bg-color">attention</span>
+                                </a>
+                            
+                                <a href="/tags/cell-type-annotation/">
+                                    <span class="chip bg-color">cell type annotation</span>
+                                </a>
+                            
+                                <a href="/tags/algorithm/">
+                                    <span class="chip bg-color">algorithm</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/09/30/scbert/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="scBERT">
+                        
+                        <span class="card-title">scBERT</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/deep-learning/" class="post-category">
+                                    deep learning
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/attention/">
+                        <span class="chip bg-color">attention</span>
+                    </a>
+                    
+                    <a href="/tags/cell-type-annotation/">
+                        <span class="chip bg-color">cell type annotation</span>
+                    </a>
+                    
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/09/16/cell-segmentation/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Cell Segmentation">
+                        
+                        <span class="card-title">Cell Segmentation</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spateo/" class="post-category">
+                                    spateo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spatial-tanscriptomics/">
+                        <span class="chip bg-color">spatial tanscriptomics</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: wulilichaoBlog<br />'
+            + 'Author: Wulilichao<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">Wulilichao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/cb11711211" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wulilichao@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=286155447" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 286155447" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/wulichao-85" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/wulichao-85" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

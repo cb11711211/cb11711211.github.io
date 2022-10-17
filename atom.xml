@@ -6,7 +6,7 @@
   <link href="http://cb11711211.github.io/atom.xml" rel="self"/>
   
   <link href="http://cb11711211.github.io/"/>
-  <updated>2022-09-27T12:51:05.010Z</updated>
+  <updated>2022-10-17T08:58:40.757Z</updated>
   <id>http://cb11711211.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scBERT</title>
+    <link href="http://cb11711211.github.io/2022/09/30/scbert/"/>
+    <id>http://cb11711211.github.io/2022/09/30/scbert/</id>
+    <published>2022-09-30T06:34:00.000Z</published>
+    <updated>2022-10-17T08:58:40.757Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h1&gt;&lt;p&gt;BERT is used in nature language</summary>
+        
+      
+    
+    
+    
+    <category term="deep learning" scheme="http://cb11711211.github.io/categories/deep-learning/"/>
+    
+    
+    <category term="attention" scheme="http://cb11711211.github.io/tags/attention/"/>
+    
+    <category term="cell type annotation" scheme="http://cb11711211.github.io/tags/cell-type-annotation/"/>
+    
+    <category term="algorithm" scheme="http://cb11711211.github.io/tags/algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>Cell Segmentation</title>
