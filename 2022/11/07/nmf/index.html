@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C-SIDE, single-cell">
-    <meta name="description" content="BackgroundStudying gene expression changes (DE) within tissue context could help us to identify the principle of organiz">
+    <meta name="keywords" content="NMF, single-cell">
+    <meta name="description" content="$\text{The interpretation of } W \text{ is that each column is a basis element}$.
+$\text{The interpretation of } H \text">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,9 +18,18 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C-SIDE | wulilichaoBlog</title>
+    <title>NMF | wulilichaoBlog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(public\medias\images\rm175-noon-03b.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -315,12 +325,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C-SIDE</h1>
+                    <h1 class="description center-align post-title">NMF</h1>
                 </div>
             </div>
         </div>
@@ -344,12 +354,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/spatial-transcriptomics/">
-                                <span class="chip bg-color">spatial transcriptomics</span>
-                            </a>
-                        
-                            <a href="/tags/methods/">
-                                <span class="chip bg-color">methods</span>
+                            <a href="/tags/algorithms/">
+                                <span class="chip bg-color">algorithms</span>
                             </a>
                         
                     </div>
@@ -360,8 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Differential-Expression/" class="post-category">
-                                Differential Expression
+                            <a href="/categories/algorithms/" class="post-category">
+                                algorithms
                             </a>
                         
                     </div>
@@ -373,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-15
+                    2022-11-07
                 </div>
                 
 
@@ -382,7 +388,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    396
+                    654
                 </div>
                 
 
@@ -407,30 +413,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Studying gene expression changes (DE) within tissue context could help us to identify the principle of organization of organ development and function. The current methods are basically classified into two groups: parametric and non-parametric. The non-parametric mthods could detect irregular expression pattern while the parametric methods could be more powerful considering the statistical hypothesis. That is, non-parametric methods could be more exploratory and parametric methods would more appropriate with the statistical. There is no statistical framewrok accounting for different technical and condition across biological replicates. </p>
-<p>For spatial transcriptomics, currently the high-throughput spatial transcriptomics profiling methods could not generate single-cell level transcirptomics profile while the FISH-based methods may encounter diffusion of RNA and imperfect cellular segmentation. </p>
-<h1 id="C-SIDE"><a href="#C-SIDE" class="headerlink" title="C-SIDE"></a>C-SIDE</h1><p>A general parametric statistical method that estimates cell type-specific DE in the context of cell type mixtures.</p>
-<h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><ol>
-<li><p>Estimate cell type proportions on each pixel using a cell-type annotated scRNA-seq reference. </p>
-</li>
-<li><p>Fit a parametric model, using predefined covariates.</p>
-<p>The model accounts for sampling noise, gene-specific overdispersion, multiple hypothesis testing and platform effects between the scRNA-seq reference and the spatial data</p>
-</li>
-</ol>
-<p>C-SIDE model permits statistical inference across multiple experimental samples and/or replicates to achieve more stable estimates of population-level differential gene expression. $\lambda_{i,j,g}$ is the expected count and N_{i,g}. </p>
+                <p>$\text{The interpretation of } W \text{ is that each column is a basis element}$.</p>
+<p>$\text{The interpretation of } H \text{ is that each column gives the ‘coordinates of a data point’ in the basis}$</p>
 <script type="math/tex; mode=display">
-Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script><script type="math/tex; mode=display">
-\log(\lambda_{i,j,g}) = \log(\Sigma_k\beta_{i,k,g}\mu_{i,j,k,g}) + \gamma_{j,g} + \epsilon_{i,j,g}</script><p>β is the proportion of cell type k contained in the pixel i for experimetal sample g; γ is a gene-specific random effect that accounts fo platform variability and ε a random effect to account for gene-specific overdispersion.</p>
-<h4 id="Estimation-process"><a href="#Estimation-process" class="headerlink" title="Estimation process"></a>Estimation process</h4><ol>
-<li>Assume u_i,k,j,g does not vary with i and g and estimate beta using a previously published algorithm.</li>
-<li>Fixing the beta estimates, and then using maximum likelihood estimation to estimate the cell type-specific DE coefficients alpha with corresponding standard erros.</li>
-<li>C-SIDE performs statistical inference across multiple replicates and/or samples to estimate consensus population-level DE.</li>
+V = WH\\ \text{Frobenius norm: }  ||X-WH||^2_F = \sum_{i,j}(X -WH)^2_{ij} \\ W\ge0,H\ge0</script><p>Features matrix for W, and coefficients matrix for H</p>
+<h3 id="Clustering-property"><a href="#Clustering-property" class="headerlink" title="Clustering property"></a>Clustering property</h3><p>It automatically clusters the columns of input data V. If we impose an orthogonality constraint on H matrix, i.e. $HH^T=I$, then the above minimization is mathematically equivalent to the minimization of K-means clustering. Furthermore, the computed H gives the cluster membership, i.e., if $H_{kj}&gt;H_{ij}$ for all $i \not= k$, this suggests that the input data $v_j$ belongs to k-th cluster. </p>
+<h3 id="Convex-non-negative-matrix-factorization"><a href="#Convex-non-negative-matrix-factorization" class="headerlink" title="Convex non-negative matrix factorization"></a>Convex non-negative matrix factorization</h3><p>In standard NMF, matrix factor $W \in R_{+}^{m \times k}$, i.e., W can be anything in that space. Convex NMF restricts the columns of W to convex combinations of the input data vectors. This greatly improves the quality of data representation of W. Furthermore, the resulting matrix factor H becomes more sparse and orthogonal.</p>
+<h3 id="Cost-functions-and-regularizations"><a href="#Cost-functions-and-regularizations" class="headerlink" title="Cost functions and regularizations"></a>Cost functions and regularizations</h3><p>minimize the function $F(W, H)=||V - WH||^2_F$</p>
+<h3 id="Online-NMF"><a href="#Online-NMF" class="headerlink" title="Online NMF"></a>Online NMF</h3><p>Collaborative filtering in recommendation systems, where there may be many users and many items to recommend, and it would be inefficient to recalculate everything when one user or one item is added to the system.</p>
+<h2 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h2><ol>
+<li>Initialize: W and H non negative</li>
+<li>Update until W and H are stable</li>
 </ol>
-<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ol>
-<li>Define different kinds of covariates, including anatomical regions, cellular environment or state, distance to a specific anatomical feature, cell-to-cell interactions, proximity to pathology, and general spatial patterns.</li>
-</ol>
-<p><img src="/2022/09/15/c-side/image-20220917002819879.png" alt="C-SIDE learns cell type-specific DE from spatial transcriptomics data"></p>
+<script type="math/tex; mode=display">
 
+H_{[i,j]}^{n+1} \gets H^n_{[i,j]} \frac{((W^n)^TV)_{[i,j]}}{((W^n)^TW^nH^n)_{[i,j]}}  \\W^{n+1}_{[i,j]} \gets W^n_{[i,j]} \frac{(V(H^{n+1})^T)_{[i,j]}}{(W^nH^{n+1}(H^{n+1})^T)_{[i,j]}}</script><p>The two multiplicative factors for W and H are matrices of ones when $V = WH$</p>
+<p><strong>Alternative approach:</strong></p>
+<ol>
+<li>H is fixed and W found by a non-negative least squares solver, then W is fixed and H is found analogously.</li>
+</ol>
+<h3 id="Sequential-NMF"><a href="#Sequential-NMF" class="headerlink" title="Sequential NMF"></a>Sequential NMF</h3><p>THe contributioin from the NMF components ranked empirically when they are constructed one by one (sequentially), i.e., learn the (n+1)-th component with the first n components constructed.</p>
+<h3 id="Exact-NMF"><a href="#Exact-NMF" class="headerlink" title="Exact NMF"></a>Exact NMF</h3><p>Exact solutions for the variants of NMF can be expected (in polynomial time) when additional constraints hold for matrix V. A polynomial time algorithm for solving nonnegative rank factorization if V contains a monomial sub matrix of rank equal to its rank was given by Compbell and Poole in 1981.</p>
+<h2 id="Application-in-Bioinformatics"><a href="#Application-in-Bioinformatics" class="headerlink" title="Application in Bioinformatics"></a>Application in Bioinformatics</h2><p>NMF has been successfully applied in bioinformatics for clustering gene expression and DNA methylation data and finding the genes most representative of the clusters. In the analysis of cancer mutations it has been used to identify common patterns of mutations that occur in many cancers and that probably have distinct causes. NMF techniques can identify sources of variation such as cell types, disease subtypes, population stratification, tissue composition, and tumor clonality.</p>
+<h2 id="Implement-in-cellchat-selectK"><a href="#Implement-in-cellchat-selectK" class="headerlink" title="Implement in cellchat selectK"></a>Implement in cellchat selectK</h2><h3 id="Cophenetic"><a href="#Cophenetic" class="headerlink" title="Cophenetic"></a>Cophenetic</h3><p>In the clustering of biological information such as data from microarray experiments, the <strong>cophenetic similarity</strong> or <strong>cophenetic distance</strong> of two object is a measure of how similar those two objects have to be grouped into the same cluster. The cophenetic distance between two objects is the height of the dendrogram where the two branches that include the two objects merge into a single branch. Outside the context of a dendrogram, it is the distance between the largest two clusters that contains the two objects individually when they are merged into a single cluster that contains both.</p>
+<p>Cophenetic correlation coefficient:</p>
+<ul>
+<li>$x(i,j)=|X_i-X_j|$, the Euclidean distance between the ith and jth observations</li>
+<li>$t(i,j)$, the dendrogrammatic distance between the model points Ti and Tj. This distance is the height of the node at which these two points are first joined together.</li>
+</ul>
+<script type="math/tex; mode=display">
+c= \frac{\sum_{i<j}[x(i,j)-\bar{x}][t(i,j)-\bar{t}]}{\sqrt{\sum_{i<j}[x(i,j)-\bar{x}]^2\sum_{i<j}[t(i,j)-\bar{t}]^2}}</script>
                 
             </div>
             <hr/>
@@ -456,7 +468,7 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cb11711211.github.io/2022/09/15/c-side/">http://cb11711211.github.io/2022/09/15/c-side/</a>
+                    <a href="http://cb11711211.github.io/2022/11/07/nmf/">http://cb11711211.github.io/2022/11/07/nmf/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -494,12 +506,8 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/spatial-transcriptomics/">
-                                    <span class="chip bg-color">spatial transcriptomics</span>
-                                </a>
-                            
-                                <a href="/tags/methods/">
-                                    <span class="chip bg-color">methods</span>
+                                <a href="/tags/algorithms/">
+                                    <span class="chip bg-color">algorithms</span>
                                 </a>
                             
                         </div>
@@ -545,17 +553,18 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/09/16/using-zsh-as-your-shell/">
+                <a href="/2022/11/07/nmf/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Using zsh as your shell">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="NMF">
                         
-                        <span class="card-title">Using zsh as your shell</span>
+                        <span class="card-title">NMF</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -565,26 +574,27 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/linux/" class="post-category">
-                                    linux
+                            <a href="/categories/algorithms/" class="post-category">
+                                    algorithms
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tips/">
-                        <span class="chip bg-color">tips</span>
+                    <a href="/tags/algorithms/">
+                        <span class="chip bg-color">algorithms</span>
                     </a>
                     
                 </div>
@@ -598,13 +608,13 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/14/tree-based-vs-deep-learning/">
+                <a href="/2022/09/30/scbert/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Tree based VS Deep learning">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="scBERT">
                         
-                        <span class="card-title">Tree based VS Deep learning</span>
+                        <span class="card-title">scBERT</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -615,15 +625,35 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Wulilichao
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/deep-learning/" class="post-category">
+                                    deep learning
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/attention/">
+                        <span class="chip bg-color">attention</span>
+                    </a>
+                    
+                    <a href="/tags/cell-type-annotation/">
+                        <span class="chip bg-color">cell type annotation</span>
+                    </a>
+                    
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -782,6 +812,13 @@ Y_{i,j,g}|\lambda_{i,j,g} \approx \text{Poisson}(N_{i,h}\lambda_{i,j,g})</script
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 

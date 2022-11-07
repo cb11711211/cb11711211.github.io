@@ -23,6 +23,15 @@ Lo">
     <title>Louvain and leiden algorithm | wulilichaoBlog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(public\medias\images\rm175-noon-03b.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -448,15 +457,14 @@ b <span class="token operator">=</span> data <span class="token operator">-</spa
 q <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>m<span class="token punctuation">)</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>trace<span class="token punctuation">(</span>label<span class="token punctuation">.</span>T<span class="token operator">*</span>b<span class="token operator">*</span>label<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"The modularity is </span><span class="token interpolation"><span class="token punctuation">{</span>q<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
 <span class="token comment">## The modularity is 0.27999999999999997</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>The value of modularity is in [-1, 1], and if all of the nodes are allocated into 1 community the modularity is 1, while if each of the node is individually community the modularity is -1. When the value is in 0.3 ~ 0.7, the performance is good.</p>
 <h3 id="Louvain-Algorithm-process"><a href="#Louvain-Algorithm-process" class="headerlink" title="Louvain Algorithm process"></a>Louvain Algorithm process</h3><p><img src="/2022/09/13/louvain-and-leiden-algorithm/pasted-3.png" alt="Equation of increasement of modularity"></p>
 <p>Two stages:</p>
 <ol>
-<li><p>To allocate each node as one independent community, and then calculate the current modularity. For node i, try to delete node i form its own community rather than has the same community with node j and calculate the outcome modularity. Now, we got the increasment of the modularity comparing the two steps. For loop each node j in whole community, move the node i to the community with the highest increasment of modularity. The figure shows the equation of the increasment of modularity.</p>
-</li>
-<li><p>Aggregating the network in the first step, try to reconsturct the whole network.</p>
-</li>
+<li>To allocate each node as one independent community, and then calculate the current modularity. For node i, try to delete node i form its own community rather than has the same community with node j and calculate the outcome modularity. Now, we got the increasment of the modularity comparing the two steps. For loop each node j in whole community, move the node i to the community with the highest increasment of modularity. The figure shows the equation of the increasment of modularity.</li>
+</ol>
+<ol>
+<li>Aggregating the network in the first step, try to reconsturct the whole network.</li>
 </ol>
 <blockquote>
 <p>In this stage we essentially collapse communities down into a single representative node, creating a new simplified graph. To do this we just sum all the edge weights between nodes of the corresponding communities to get a single weighted edge between them, and collapse each community down to a single new node. Once aggregation is complete we restart the local moving phase, and continue to iterate until everything converges down to one node. This aspect of the Louvain algorithm can be used to give information about the hierarchical relationships between communities by tracking at which stage the nodes in the communities were aggregated.</p>

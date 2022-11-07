@@ -6,7 +6,7 @@
   <link href="http://cb11711211.github.io/atom.xml" rel="self"/>
   
   <link href="http://cb11711211.github.io/"/>
-  <updated>2022-10-17T09:11:41.348Z</updated>
+  <updated>2022-11-07T10:13:57.016Z</updated>
   <id>http://cb11711211.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NMF</title>
+    <link href="http://cb11711211.github.io/2022/11/07/nmf/"/>
+    <id>http://cb11711211.github.io/2022/11/07/nmf/</id>
+    <published>2022-11-07T10:08:00.000Z</published>
+    <updated>2022-11-07T10:13:57.016Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;$\text{The interpretation of } W \text{ is that each column is a basis element}$.&lt;/p&gt;
+&lt;p&gt;$\text{The interpretation of } H \text{ is that</summary>
+        
+      
+    
+    
+    
+    <category term="algorithms" scheme="http://cb11711211.github.io/categories/algorithms/"/>
+    
+    
+    <category term="algorithms" scheme="http://cb11711211.github.io/tags/algorithms/"/>
+    
+  </entry>
   
   <entry>
     <title>scBERT</title>
@@ -141,33 +167,6 @@
     
     
     <category term="tips" scheme="http://cb11711211.github.io/tags/tips/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C-SIDE</title>
-    <link href="http://cb11711211.github.io/2022/09/15/c-side/"/>
-    <id>http://cb11711211.github.io/2022/09/15/c-side/</id>
-    <published>2022-09-15T06:07:00.000Z</published>
-    <updated>2022-09-27T12:50:46.667Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot; title=&quot;Background&quot;&gt;&lt;/a&gt;Background&lt;/h1&gt;&lt;p&gt;Studying gene expression changes (DE)</summary>
-        
-      
-    
-    
-    
-    <category term="Differential Expression" scheme="http://cb11711211.github.io/categories/Differential-Expression/"/>
-    
-    
-    <category term="spatial transcriptomics" scheme="http://cb11711211.github.io/tags/spatial-transcriptomics/"/>
-    
-    <category term="methods" scheme="http://cb11711211.github.io/tags/methods/"/>
     
   </entry>
   

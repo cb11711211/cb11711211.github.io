@@ -20,6 +20,15 @@
     <title>About | wulilichaoBlog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        body{
+            background-image: url(public\medias\images\rm175-noon-03b.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -561,7 +570,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10"]
+            data: ["2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11"]
         },
         yAxis: {
             type: 'value',
@@ -571,7 +580,7 @@
                 name: 'Number of posts',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,15,0],
+                data: [0,0,0,0,0,0,0,0,0,0,14,0,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -613,7 +622,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Git","value":1},{"name":"algorithm","value":2},{"name":"Hexo","value":2},{"name":"Differential Expression","value":1},{"name":"conda","value":1},{"name":"linux","value":2},{"name":"spateo","value":1},{"name":"deep learning","value":1}],
+                data: [{"name":"Git","value":1},{"name":"algorithms","value":1},{"name":"spateo","value":1},{"name":"Hexo","value":2},{"name":"algorithm","value":2},{"name":"conda","value":1},{"name":"linux","value":2},{"name":"deep learning","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -637,7 +646,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["tips","blog","spatial transcriptomics","spatial transciptomics","clustering","methods","conda","spatial tanscriptomics","attention","cell type annotation"]
+                data: ["tips","blog","spatial transcriptomics","spatial tanscriptomics","spatial transciptomics","clustering","conda","attention","cell type annotation","algorithm"]
             }
         ],
         yAxis: [
@@ -650,7 +659,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [5,2,2,1,1,1,1,1,1,1],
+                data: [5,2,1,1,1,1,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
