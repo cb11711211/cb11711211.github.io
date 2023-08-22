@@ -391,7 +391,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    783
+                    1.1k
                 </div>
                 
 
@@ -447,7 +447,7 @@
 <li>NB mixture model</li>
 <li>Belief Propgadation</li>
 </ol>
-<h2 id="The-document-desciption-about-the-score-pixels"><a href="#The-document-desciption-about-the-score-pixels" class="headerlink" title="The document desciption about the score_pixels"></a>The document desciption about the <code>score_pixels</code></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># All methods other than gauss requires EM</span>
+<h2 id="The-document-description-about-the-score-pixels"><a href="#The-document-description-about-the-score-pixels" class="headerlink" title="The document description about the score_pixels"></a>The document description about the <code>score_pixels</code></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># All methods other than gauss requires EM</span>
     <span class="token keyword">if</span> method <span class="token operator">==</span> <span class="token string">"gauss"</span><span class="token punctuation">:</span>
         <span class="token comment"># For just "gauss" method, we should rescale to [0, 1] because all the</span>
         <span class="token comment"># other methods eventually produce an array of [0, 1] values.</span>
@@ -488,37 +488,37 @@
         <span class="token keyword">if</span> <span class="token string">"gauss"</span> <span class="token keyword">in</span> method<span class="token punctuation">:</span>
             lm<span class="token punctuation">.</span>main_debug<span class="token punctuation">(</span><span class="token string">"Computing Gaussian blur."</span><span class="token punctuation">)</span>
             res <span class="token operator">=</span> utils<span class="token punctuation">.</span>conv2d<span class="token punctuation">(</span>res<span class="token punctuation">,</span> k<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">"gauss"</span><span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">""</span>"Score each pixel by how likely it <span class="token keyword">is</span> a cell<span class="token punctuation">.</span> Values returned are <span class="token keyword">in</span>
-    <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">"""
+Score each pixel by how likely it is a cell. Values returned are in [0, 1].
+    Args:
+        X: UMI counts per pixel as either a sparse or dense array.
+        k: Kernel size for convolution.
+        method: Method to use. Valid methods are:
+            gauss: Gaussian blur
+            moran: Moran's I based method
+            EM: EM algorithm to estimate cell and background expression
+                parameters.
+            EM+gauss: Negative binomial EM algorithm followed by Gaussian blur.
+            EM+BP: EM algorithm followed by belief propagation to estimate the
+                marginal probabilities of cell and background.
+            VI+gauss: Negative binomial VI algorithm followed by Gaussian blur.
+                Note that VI also supports the zero-inflated negative binomial (ZINB)
+                by providing `zero_inflated=True`.
+            VI+BP: VI algorithm followed by belief propagation. Note that VI also
+                supports the zero-inflated negative binomial (ZINB) by providing
+                `zero_inflated=True`.
+        moran_kwargs: Keyword arguments to the :func:`moran.run_moran` function.
+        em_kwargs: Keyword arguments to the :func:`em.run_em` function.
+        bp_kwargs: Keyword arguments to the :func:`bp.run_bp` function.
+        certain_mask: A boolean Numpy array indicating which pixels are certain
+            to be occupied, a-priori. For example, if nuclei staining is available,
+            this would be the nuclei segmentation mask.
+        bins: Pixel bins to segment separately. Only takes effect when the EM
+            algorithm is run.
 
-    Args<span class="token punctuation">:</span>
-        X<span class="token punctuation">:</span> UMI counts per pixel <span class="token keyword">as</span> either a sparse <span class="token keyword">or</span> dense array<span class="token punctuation">.</span>
-        k<span class="token punctuation">:</span> Kernel size <span class="token keyword">for</span> convolution<span class="token punctuation">.</span>
-        method<span class="token punctuation">:</span> Method to use<span class="token punctuation">.</span> Valid methods are<span class="token punctuation">:</span>
-            gauss<span class="token punctuation">:</span> Gaussian blur
-            moran<span class="token punctuation">:</span> Moran's I based method
-            EM<span class="token punctuation">:</span> EM algorithm to estimate cell <span class="token keyword">and</span> background expression
-                parameters<span class="token punctuation">.</span>
-            EM<span class="token operator">+</span>gauss<span class="token punctuation">:</span> Negative binomial EM algorithm followed by Gaussian blur<span class="token punctuation">.</span>
-            EM<span class="token operator">+</span>BP<span class="token punctuation">:</span> EM algorithm followed by belief propagation to estimate the
-                marginal probabilities of cell <span class="token keyword">and</span> background<span class="token punctuation">.</span>
-            VI<span class="token operator">+</span>gauss<span class="token punctuation">:</span> Negative binomial VI algorithm followed by Gaussian blur<span class="token punctuation">.</span>
-                Note that VI also supports the zero<span class="token operator">-</span>inflated negative binomial <span class="token punctuation">(</span>ZINB<span class="token punctuation">)</span>
-                by providing `zero_inflated<span class="token operator">=</span><span class="token boolean">True</span>`<span class="token punctuation">.</span>
-            VI<span class="token operator">+</span>BP<span class="token punctuation">:</span> VI algorithm followed by belief propagation<span class="token punctuation">.</span> Note that VI also
-                supports the zero<span class="token operator">-</span>inflated negative binomial <span class="token punctuation">(</span>ZINB<span class="token punctuation">)</span> by providing
-                `zero_inflated<span class="token operator">=</span><span class="token boolean">True</span>`<span class="token punctuation">.</span>
-        moran_kwargs<span class="token punctuation">:</span> Keyword arguments to the <span class="token punctuation">:</span>func<span class="token punctuation">:</span>`moran<span class="token punctuation">.</span>run_moran` function<span class="token punctuation">.</span>
-        em_kwargs<span class="token punctuation">:</span> Keyword arguments to the <span class="token punctuation">:</span>func<span class="token punctuation">:</span>`em<span class="token punctuation">.</span>run_em` function<span class="token punctuation">.</span>
-        bp_kwargs<span class="token punctuation">:</span> Keyword arguments to the <span class="token punctuation">:</span>func<span class="token punctuation">:</span>`bp<span class="token punctuation">.</span>run_bp` function<span class="token punctuation">.</span>
-        certain_mask<span class="token punctuation">:</span> A boolean Numpy array indicating which pixels are certain
-            to be occupied<span class="token punctuation">,</span> a<span class="token operator">-</span>priori<span class="token punctuation">.</span> For example<span class="token punctuation">,</span> <span class="token keyword">if</span> nuclei staining <span class="token keyword">is</span> available<span class="token punctuation">,</span>
-            this would be the nuclei segmentation mask<span class="token punctuation">.</span>
-        bins<span class="token punctuation">:</span> Pixel bins to segment separately<span class="token punctuation">.</span> Only takes effect when the EM
-            algorithm <span class="token keyword">is</span> run<span class="token punctuation">.</span>
-
-    Returns<span class="token punctuation">:</span>
-        <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span> score of each pixel being a cell<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    Returns:
+        [0, 1] score of each pixel being a cell.
+"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="score-and-mask-pixels-code"><a href="#score-and-mask-pixels-code" class="headerlink" title="score_and_mask_pixels() code"></a>score_and_mask_pixels() code</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">X <span class="token operator">=</span> SKM<span class="token punctuation">.</span>select_layer_data<span class="token punctuation">(</span>adata<span class="token punctuation">,</span> layer<span class="token punctuation">,</span> make_dense<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
     certain_mask <span class="token operator">=</span> <span class="token boolean">None</span>
     <span class="token keyword">if</span> certain_layer<span class="token punctuation">:</span>
@@ -536,6 +536,53 @@
 <p>The packages is using SKM to manage its data_loading and data_saving. </p>
 <p><code>SKM.select_layer_data(adata, layer, make_dense=True)</code> means to select the layer of anndata and using dense matrix rather than sparse matrix.</p>
 <p><code>SKM.set_layer_data(adata, scores_layer, scores)</code> means to save the data in layer of anndata and name it scores_layer, scores is the data matrix.</p>
+<h1 id="Practice-problems"><a href="#Practice-problems" class="headerlink" title="Practice problems"></a>Practice problems</h1><h2 id="Read-the-file"><a href="#Read-the-file" class="headerlink" title="Read the file"></a>Read the file</h2><p>There are many read file function in <code>st.io</code>, but all of the function are warp of <code>st.io.read_bgi_agg</code>. </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">adata <span class="token operator">=</span> st<span class="token punctuation">.</span>io<span class="token punctuation">.</span>read_bgi_agg<span class="token punctuation">(</span><span class="token string">"D2_bgi_new.tsv"</span><span class="token punctuation">,</span> <span class="token string">"CN13_D2_HE.tiff"</span><span class="token punctuation">,</span>prealigned<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span class="token comment"># prealinged=False to tell the tsv to align with image</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="Obtain-cellxgene-adata"><a href="#Obtain-cellxgene-adata" class="headerlink" title="Obtain cellxgene adata"></a>Obtain cellxgene adata</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">cell_adata <span class="token operator">=</span> st<span class="token punctuation">.</span>io<span class="token punctuation">.</span>read_bgi<span class="token punctuation">(</span>
+    <span class="token comment"># 'SS200000135TL_D1_all_bin1.txt.gz',</span>
+    <span class="token string">"D2_bgi_new.tsv"</span><span class="token punctuation">,</span>
+    segmentation_adata<span class="token operator">=</span>adata<span class="token punctuation">,</span>
+    labels_layer<span class="token operator">=</span><span class="token string">'watershed_labels'</span><span class="token punctuation">,</span>
+    add_props<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Drawing"><a href="#Drawing" class="headerlink" title="Drawing"></a>Drawing</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># you could use the mathplotlib.pyplot to draw the img of interest</span>
+<span class="token comment"># and here is the default setting for spateo</span>
+<span class="token operator">%</span>config InlineBackend<span class="token punctuation">.</span>print_figure_kwargs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'facecolor'</span> <span class="token punctuation">:</span> <span class="token string">"w"</span><span class="token punctuation">}</span>
+<span class="token operator">%</span>config InlineBackend<span class="token punctuation">.</span>figure_format <span class="token operator">=</span> <span class="token string">'retina'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Drawing-different-layers-in-a-picture"><a href="#Drawing-different-layers-in-a-picture" class="headerlink" title="Drawing different layers in a picture"></a>Drawing different layers in a picture</h3><p>You could use <code>axes</code> in pyplot to draw figure</p>
+<p>Note, for the <code>adata</code> directly read from </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">fig<span class="token punctuation">,</span> axes <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tight_layout<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token comment"># The [x:x+x_delta, y:y+y_delta] could used to observe the ROI</span>
+st<span class="token punctuation">.</span>pl<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>adata<span class="token punctuation">[</span><span class="token number">400</span><span class="token punctuation">:</span><span class="token number">400</span><span class="token operator">+</span><span class="token number">520</span><span class="token punctuation">,</span><span class="token number">1100</span><span class="token punctuation">:</span><span class="token number">1100</span><span class="token operator">+</span><span class="token number">667</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'stain'</span><span class="token punctuation">,</span> ax<span class="token operator">=</span>axes<span class="token punctuation">,</span> use_scale<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> save_show_or_return <span class="token operator">=</span> <span class="token string">'return'</span><span class="token punctuation">,</span> cmap <span class="token operator">=</span> clr<span class="token punctuation">.</span>LinearSegmentedColormap<span class="token punctuation">.</span>from_list<span class="token punctuation">(</span><span class="token string">'custom blue'</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'#000000FF'</span><span class="token punctuation">,</span> <span class="token string">'#FFFFFFFF'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> N<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+st<span class="token punctuation">.</span>pl<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>adata<span class="token punctuation">[</span><span class="token number">400</span><span class="token punctuation">:</span><span class="token number">400</span><span class="token operator">+</span><span class="token number">520</span><span class="token punctuation">,</span><span class="token number">1100</span><span class="token punctuation">:</span><span class="token number">1100</span><span class="token operator">+</span><span class="token number">667</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'cell_labels_boundary'</span><span class="token punctuation">,</span> ax<span class="token operator">=</span>axes<span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span>clr<span class="token punctuation">.</span>LinearSegmentedColormap<span class="token punctuation">.</span>from_list<span class="token punctuation">(</span><span class="token string">'custom blue'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'#FFFFFF00'</span><span class="token punctuation">,</span><span class="token string">'#FF0000FF'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> N<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">,</span> use_scale<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> save_show_or_return<span class="token operator">=</span><span class="token string">'return'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># fig.savefig("{path}/{name_of_file}.pdf/.png", dpi=300)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Import the figure or cell mask from other methods</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">img <span class="token operator">=</span> plt<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token string">"{file}"</span><span class="token punctuation">)</span>
+<span class="token comment"># img = np.flip(img, axis=0)</span>
+y_int <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>adata<span class="token punctuation">.</span>var_names<span class="token punctuation">)</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>int16<span class="token punctuation">)</span>
+x_int <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>adata<span class="token punctuation">.</span>obs_names<span class="token punctuation">)</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>int16<span class="token punctuation">)</span>
+y_max<span class="token punctuation">,</span> y_min <span class="token operator">=</span> y_int<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y_int<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+x_max<span class="token punctuation">,</span> x_min <span class="token operator">=</span> x_int<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> x_int<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>y_max<span class="token punctuation">,</span> y_min<span class="token punctuation">,</span> x_max<span class="token punctuation">,</span> x_min<span class="token punctuation">)</span>
+
+<span class="token comment"># set the weight of border</span>
+ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'top'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'bottom'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'left'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>spines<span class="token punctuation">[</span><span class="token string">'right'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_linewidth<span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Statistic-Test"><a href="#Statistic-Test" class="headerlink" title="Statistic Test"></a>Statistic Test</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># ranksums</span>
+<span class="token keyword">from</span> scipy<span class="token punctuation">.</span>stats <span class="token keyword">import</span> ranksums
+
+ranksums<span class="token punctuation">(</span>df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"cell_or_bin"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Cell"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"density"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"cell_or_bin"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Cytoplasma"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"density"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+ranksums<span class="token punctuation">(</span>df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"cell_or_bin"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Cell"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"n_counts"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"cell_or_bin"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Cell"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"n_counts"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># T-test</span>
+<span class="token keyword">from</span> scipy<span class="token punctuation">.</span>stats <span class="token keyword">import</span> ttest_ind
+
+ttest_ind<span class="token punctuation">(</span>df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"cell_or_bin"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Cell"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"n_counts"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"cell_or_bin"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Cytoplasma"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"n_counts"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -651,13 +698,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/09/30/scbert/">
+                <a href="/2022/09/19/ddp/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="scBERT">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Pytorch Distributed Data Parallel (DDP)">
                         
-                        <span class="card-title">scBERT</span>
+                        <span class="card-title">Pytorch Distributed Data Parallel (DDP)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -668,14 +715,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/deep-learning/" class="post-category">
-                                    deep learning
+                            <a href="/categories/algorithms/" class="post-category">
+                                    algorithms
                                 </a>
                             
                             
@@ -685,16 +732,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/attention/">
-                        <span class="chip bg-color">attention</span>
+                    <a href="/tags/spatial-transcriptomics/">
+                        <span class="chip bg-color">spatial transcriptomics</span>
                     </a>
                     
-                    <a href="/tags/cell-type-annotation/">
-                        <span class="chip bg-color">cell type annotation</span>
-                    </a>
-                    
-                    <a href="/tags/algorithm/">
-                        <span class="chip bg-color">algorithm</span>
+                    <a href="/tags/cell-segment/">
+                        <span class="chip bg-color">cell segment</span>
                     </a>
                     
                 </div>
@@ -915,7 +958,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <a href="/about" target="_blank">Wulilichao</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>

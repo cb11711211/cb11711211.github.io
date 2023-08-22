@@ -391,7 +391,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    334
+                    607
                 </div>
                 
 
@@ -422,14 +422,44 @@
 <pre class="line-numbers language-{bash}" data-language="{bash}"><code class="language-{bash}">conda create -n my-env python=x.x
 conda activate [env-name]
 conda install -c r r-base # install the r packages that is not easily installed through conda<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="Using-jupyter-kernel"><a href="#Using-jupyter-kernel" class="headerlink" title="Using jupyter kernel"></a>Using jupyter kernel</h3><p>When you create a new conda environment, you could install ipykernel and IRkernel using the packages in this environments through<br></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>m ipykernel install <span class="token operator">-</span><span class="token operator">-</span>user <span class="token operator">-</span><span class="token operator">-</span>name $<span class="token punctuation">{</span>name<span class="token operator">/</span>of<span class="token operator">/</span>your<span class="token operator">/</span>kernel<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>and in R<br><pre class="line-numbers language-R" data-language="R"><code class="language-R">install.packages("IRkernel")
+<h3 id="Using-jupyter-kernel"><a href="#Using-jupyter-kernel" class="headerlink" title="Using jupyter kernel"></a>Using jupyter kernel</h3><p>When you create a new conda environment, you could install ipykernel and IRkernel using the packages in this environments through<br></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-m</span> ipykernel <span class="token function">install</span> <span class="token parameter variable">--user</span> <span class="token parameter variable">--name</span> <span class="token variable">${name<span class="token operator">/</span>of<span class="token operator">/</span>your<span class="token operator">/</span>kernel}</span>
+<span class="token comment"># install the python kernel in conda env</span>
+<span class="token comment"># use --display-name to set the name of the kernel</span>
+<span class="token comment"># i.e.</span>
+python <span class="token parameter variable">-m</span> ipykernel <span class="token function">install</span> <span class="token parameter variable">--user</span> <span class="token parameter variable">--name</span> pytorch --display-name "pytorch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>and in R<br><pre class="line-numbers language-R" data-language="R"><code class="language-R">install.packages("IRkernel")
 IRkernel::install_spec()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
 <p>The <code>conda install</code> would install the packages in any environment</p>
 <h2 id="conda-install-r-packages"><a href="#conda-install-r-packages" class="headerlink" title="conda install r-packages"></a>conda install r-packages</h2><p>If you find some packages could not install from CRAN through <code>install.packages()</code> in R, and the warning log says that there is some missing lib you may not install. You could easily fix that if you have <code>sudo</code> authority, however, the install of missing support could not easily if you are not root. So, I encourage to use packages manager tools like conda to achieve that.</p>
 <p>When you are encountering some trouble in installation, you could firstly google <code>conda install $packages_name</code>. Usually, the conda channel r could have the packages in repository. And you could easily install it through <code>conda install</code>. And if there are more problems, you may have to search for configuring it through source, but some development support could also be installed through conda. So that, conda could save your life, if you are not roor user.</p>
 <p>When you encounter other problems, try install the missing support packages through this way.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># unable to execute 'x86_64-conda_cos6-linux-gnu-gcc': No such file or directory </span>
-conda <span class="token function">install</span> gxx_linux-64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="conda-channels"><a href="#conda-channels" class="headerlink" title="conda channels"></a>conda channels</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># unable to execute 'x86_64-conda_cos6-linux-gnu-gcc': No such file or directory </span>
+conda <span class="token function">install</span> gxx_linux-64
+conda config <span class="token parameter variable">--add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config <span class="token parameter variable">--add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+
+<span class="token comment"># 以上两条是Anaconda官方库的镜像</span>
+conda config <span class="token parameter variable">--add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+
+<span class="token comment"># 以上是Anaconda第三方库 Conda Forge的镜像</span>
+
+conda config <span class="token parameter variable">--set</span> show_channel_urls <span class="token function">yes</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Storage-control"><a href="#Storage-control" class="headerlink" title="Storage control"></a>Storage control</h1><p>After a long period using conda, you may would install too many packages in the default directory. In case you run out of the disk storage, you could move your <code>.conda</code> directory to some where you own enough dist. </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Get the size of current directory</span>
+<span class="token function">du</span> <span class="token parameter variable">-sh</span>
+<span class="token comment"># Check the </span>
+/DATA/User/<span class="token punctuation">{</span>user<span class="token punctuation">}</span>/.conda
+<span class="token comment"># move the directory to antoher directory</span>
+<span class="token function">mv</span> /DATA/User/<span class="token punctuation">{</span>user<span class="token punctuation">}</span>/.conda /where/has/enough/dist
+<span class="token function">ln</span> <span class="token parameter variable">-s</span> /where/has/enough/dist /DATA/User/<span class="token punctuation">{</span>user<span class="token punctuation">}</span>/.conda<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Then you will not have to change the setting of conda.</p>
+<h1 id="Some-other-problems-you-can-solve-using-conda"><a href="#Some-other-problems-you-can-solve-using-conda" class="headerlink" title="Some other problems you can solve using conda"></a>Some other problems you can solve using conda</h1><h2 id="install-spateo"><a href="#install-spateo" class="headerlink" title="install spateo"></a>install spateo</h2><p><code>fbgbp</code> is a cpython library for belief propagation, and it is very hard to download due to some g++ problems. You may need to upgrade your g++ version and then add the soft link of the g++ in the lib64 directory in your machine or server.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">install</span> <span class="token parameter variable">-c</span> conda-forge gcc libgcc
+conda <span class="token function">install</span> <span class="token parameter variable">-c</span> conda-forge gxx_linux-64
+
+
+<span class="token builtin class-name">cd</span> /<span class="token punctuation">..</span>./anaconda3/envs/<span class="token punctuation">..</span>./bin
+<span class="token function">ln</span> <span class="token parameter variable">-s</span> /<span class="token punctuation">..</span>./anaconda3/envs/<span class="token punctuation">..</span>./bin/x86_64-conda_cos6-linux-gnu-g++ g++<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -804,7 +834,7 @@ conda <span class="token function">install</span> gxx_linux-64<span aria-hidden=
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <a href="/about" target="_blank">Wulilichao</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>

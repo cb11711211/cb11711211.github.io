@@ -72,11 +72,38 @@
   </entry>
   
   <entry>
+    <title>Pytorch Distributed Data Parallel (DDP)</title>
+    <link href="http://cb11711211.github.io/2022/09/19/ddp/"/>
+    <id>http://cb11711211.github.io/2022/09/19/ddp/</id>
+    <published>2022-09-19T09:27:00.000Z</published>
+    <updated>2023-08-22T02:45:26.461Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Single-node-multi-GPU&quot;&gt;&lt;a href=&quot;#Single-node-multi-GPU&quot; class=&quot;headerlink&quot; title=&quot;Single node multi-GPU&quot;&gt;&lt;/a&gt;Single node</summary>
+        
+      
+    
+    
+    
+    <category term="algorithms" scheme="http://cb11711211.github.io/categories/algorithms/"/>
+    
+    
+    <category term="spatial transcriptomics" scheme="http://cb11711211.github.io/tags/spatial-transcriptomics/"/>
+    
+    <category term="cell segment" scheme="http://cb11711211.github.io/tags/cell-segment/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Cell Segmentation</title>
     <link href="http://cb11711211.github.io/2022/09/16/cell-segmentation/"/>
     <id>http://cb11711211.github.io/2022/09/16/cell-segmentation/</id>
     <published>2022-09-16T07:47:00.000Z</published>
-    <updated>2022-09-27T12:51:05.010Z</updated>
+    <updated>2023-04-22T04:57:03.111Z</updated>
     
     
       
@@ -221,7 +248,7 @@
     <link href="http://cb11711211.github.io/2022/09/13/using-conda-to-help-install-r-packages/"/>
     <id>http://cb11711211.github.io/2022/09/13/using-conda-to-help-install-r-packages/</id>
     <published>2022-09-13T12:59:00.000Z</published>
-    <updated>2022-09-27T06:36:32.579Z</updated>
+    <updated>2023-08-02T02:41:06.886Z</updated>
     
     
       
